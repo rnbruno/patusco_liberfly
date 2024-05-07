@@ -18,9 +18,9 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Definir permissões para um diretório
-RUN chown -R carlos:carlos /var/www
+RUN chown -R root:root /var/www
 
-RUN chmod 755 -R /var/www
+RUN chmod 777 -R /var/www
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd sockets
@@ -44,4 +44,4 @@ WORKDIR /var/www
 # Copy custom configurations PHP
 COPY docker/php/custom.ini /usr/local/etc/php/conf.d/custom.ini
 
-USER $user
+USER root
