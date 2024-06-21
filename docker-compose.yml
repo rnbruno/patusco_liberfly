@@ -29,19 +29,21 @@ services:
 
     # db mysql
     db:
-        image: mysql:5.7.22
+        image: mariadb:10.4
         restart: unless-stopped
         environment:
-            MYSQL_DATABASE: ${DB_DATABASE:-laravel}
-            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
-            MYSQL_PASSWORD: ${DB_PASSWORD:-userpass}
-            MYSQL_USER: ${DB_USERNAME:-username}
+            MYSQL_DATABASE: ${DB_DATABASE:-curupira}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-@0}
+            MYSQL_PASSWORD: ${DB_PASSWORD:-@0}
+            MYSQL_USER: ${DB_USERNAME:-curupira}
         volumes:
-            - ./.docker/mysql/dbdata:/var/lib/mysql
+            - ./.docker/mariadb/dbdata:/var/lib/mysql
+            - ./BackupBDCurupira-20240621-123001.sql:/docker-entrypoint-initdb.d/BackupBDCurupira-20240621-123001.sql
         ports:
             - "3388:3306"
         networks:
             - laravel
+
 
     # queue
     queue:
