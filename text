@@ -1,0 +1,6 @@
+docker ps -a --format '{{.Names}}'| xargs docker rm --force
+docker-compose logs db
+docker exec -it <container_id_or_name> /bin/bash
+docker exec -it 0cc2c6f71841 /bin/bash
+docker images -a --format '{{.Repository}}:{{.Tag}}' | xargs docker rmi --force
+
