@@ -4,3 +4,12 @@ docker exec -it <container_id_or_name> /bin/bash
 docker exec -it 0cc2c6f71841 /bin/bash
 docker images -a --format '{{.Repository}}:{{.Tag}}' | xargs docker rmi --force
 
+docker-compose up -d
+
+docker-compose exec app bash
+composer install
+php artisan key:generate
+
+https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Installation
+
+php artisan adminlte:install --only=auth_views
