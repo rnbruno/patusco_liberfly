@@ -33,8 +33,8 @@ services:
         restart: unless-stopped
         environment:
             MYSQL_DATABASE: ${DB_DATABASE:-curupira}
-            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-@0}
-            MYSQL_PASSWORD: ${DB_PASSWORD:-@0}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-pr0t3c@0}
+            MYSQL_PASSWORD: ${DB_PASSWORD:-pr0t3c@0}
             MYSQL_USER: ${DB_USERNAME:-curupira}
         volumes:
             - ./.docker/mariadb/dbdata:/var/lib/mysql
