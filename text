@@ -25,7 +25,7 @@ docker images -a --format '{{.Repository}}:{{.Tag}}' | xargs docker rmi --force
 **No arquivo app/Providers/AppServiceProvider.php, registre o middleware do Inertia.js:
 
 php
-Copiar código
+Copiar cï¿½digo
 use Inertia\Inertia;
 use Inertia\Middleware;
 
@@ -47,5 +47,9 @@ php artisan view:cache
 //Login
 composer require laravel/breeze --dev
 php artisan breeze install
+
+Ver o daemon dos containers
+chmod 777 /var/run/docker.sock
+
 
 
