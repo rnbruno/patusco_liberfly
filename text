@@ -26,8 +26,24 @@ docker images -a --format '{{.Repository}}:{{.Tag}}' | xargs docker rmi --force
 
 php
 Copiar cï¿½digo
+
+composer require inertiajs/inertia-laravel
+
+php artisan inertia:middleware
+
+
 use Inertia\Inertia;
 use Inertia\Middleware;
+protected $middlewareGroups = [
+    'web' => [
+        // ...
+        \App\Http\Middleware\HandleInertiaRequests::class,
+    ],
+    // ...
+];
+
+npm install @inertiajs/inertia @inertiajs/inertia-vue3 vue@next
+é para isso, faciliar a integração
 
 public function boot()
 {
@@ -51,5 +67,8 @@ php artisan breeze install
 Ver o daemon dos containers
 chmod 777 /var/run/docker.sock
 
+Lucascudo pacote pt-br
+
+composer require inertiajs/inertia-laravel
 
 
