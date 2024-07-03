@@ -1,7 +1,7 @@
 FROM php:8.1-fpm
 
 # set your user name, ex: user=bernardo
-ARG user=carlos
+ARG user=rnbruno
 ARG uid=1000
 
 # Install system dependencies
@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Definir permissões para um diretório
+# Definir permissï¿½es para um diretï¿½rio
 RUN chown -R root:root /var/www
 
 RUN chmod 777 -R /var/www

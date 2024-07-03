@@ -4,11 +4,12 @@ use App\Http\Controllers\Admin\{ReplySupportController, SupportController};
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::get('/contato', [SiteController::class, 'contact']);
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Create');
 });
 
 Route::get('/dashboard', function () {
