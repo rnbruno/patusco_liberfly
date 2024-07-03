@@ -43,7 +43,7 @@ protected $middlewareGroups = [
 ];
 
 npm install @inertiajs/inertia @inertiajs/inertia-vue3 vue@next
-é para isso, faciliar a integração
+ï¿½ para isso, faciliar a integraï¿½ï¿½o
 
 public function boot()
 {
@@ -72,3 +72,7 @@ Lucascudo pacote pt-br
 composer require inertiajs/inertia-laravel
 
 
+https://youtu.be/TW6Yg79YkAs?list=PLa9jxxDE6i_1cWCmpsizPHS70XId43Ujy
+
+npm install vue@3
+npm install @vitejs/plugin-vue
