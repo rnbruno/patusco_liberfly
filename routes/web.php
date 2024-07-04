@@ -2,15 +2,21 @@
 
 use App\Http\Controllers\Admin\{ReplySupportController, SupportController};
 use App\Http\Controllers\ProfileController;
+<<<<<<< HEAD
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+=======
+use App\Http\Controllers\Site\SiteController;
+use Illuminate\Support\Facades\Route;
+>>>>>>> 59ad0d99e6c13cfb77bd7721699bb1bec172fcdf
 
 Route::get('/contato', [SiteController::class, 'contact']);
 
 Route::get('/', function () {
+<<<<<<< HEAD
     return Inertia::render('Create');
 });
 
@@ -29,6 +35,11 @@ Route::get('customers',[CustomerController::class, 'index'])->name('customers.in
 Route::post('customers',[CustomerController::class,'store']);
 
 
+=======
+    return view('welcome');
+});
+
+>>>>>>> 59ad0d99e6c13cfb77bd7721699bb1bec172fcdf
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+<<<<<<< HEAD
 import vue from '@vitejs/plugin-vue';
+=======
+>>>>>>> 59ad0d99e6c13cfb77bd7721699bb1bec172fcdf
 
 export default defineConfig({
     plugins: [
@@ -11,6 +14,7 @@ export default defineConfig({
             ],
             refresh: true,
         }),
+<<<<<<< HEAD
         vue({
             template:{
                 transformAssetUrls: {},
@@ -19,5 +23,7 @@ export default defineConfig({
 
             }
         })
+=======
+>>>>>>> 59ad0d99e6c13cfb77bd7721699bb1bec172fcdf
     ],
 });
