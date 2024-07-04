@@ -3,6 +3,7 @@
     import { useForm } from '@inertiajs/vue3';
     import {router} from '@inertiajs/vue3';
     import Swal from '../../plugins/sweetalert2';
+    import axios from 'axios';
 
     defineProps({
         usuarios: Object
@@ -39,12 +40,12 @@
               <td>{{ usuario.usuario }}</td>
               <td>{{ usuario.telefone }}</td>
               <td><button type="button" class="btn btn-warning m-1">Editar</button>
-                <button type="button" class="btn btn-danger" v-if="usuario.pessoa_inativo == 0">Desativar</button>
-                <button type="button" class="btn btn-success" v-else>Ativar</button>
+                <button type="button" class="btn btn-danger" @click="sendAjaxRequest" v-if="usuario.pessoa_inativo == 0">Desativar</button>
+                <button type="button" class="btn btn-success"  @click="sendAjaxRequest"  v-else>Ativar</button>
               </td>
             </tr>
             
-            
+
            
            
             
@@ -58,6 +59,26 @@
 
 <script>
 export default {
-    name: 'Usuarios'
-}
+    name: 'Usuarios',
+    data() {
+    return {
+      message: ''
+    };
+  },
+  methods: {
+    sendAjaxRequest() {
+      axios.post('/ajax-request-usuario', {
+        key1: 'value1',
+        key2: 'value2'
+      })
+      .then(response => {
+        this.message = response.data.message;
+      })
+      .catch(error => {
+        console.error('Erro ao processar a requisição AJAX:', error);
+      });
+    }
+  }
+};
+
 </script>

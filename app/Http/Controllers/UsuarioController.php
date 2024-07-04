@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Http\JsonResponse;
 
 class UsuarioController extends Controller
 {
@@ -62,6 +62,19 @@ class UsuarioController extends Controller
         // ]);
     }
 
+    public function handleAjaxRequest(Request $request): JsonResponse
+    {
+        // Processar a requisição
+        $data = $request->all();
+        
+        // Retornar uma resposta JSON
+        return response()->json([
+            'message' => 'Requisicao AJAX processada com sucesso!',
+            'data' => $data,
+        ]);
+    }
+
+    
     /**
      * Show the form for creating a new resource.
      */
