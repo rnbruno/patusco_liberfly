@@ -16,28 +16,34 @@
 </style>
 <template>
     <h2>Teste..</h2>
-    <div class="card col-9 offset-2">
+    <div class="card col-10 offset-1">
          <div class="card-body">
-            <h2>Usuários</h2>
+            <h3>Usu&aacute;rios Operadores do Sistema</h3>
       <div class="table-responsive small">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th scope="col">Cód.</th>
-              <th scope="col">Tipo</th>
+              <th scope="col">#</th>
+              <th scope="col">C&oacute;d.</th>
               <th scope="col">Nome</th>
-              <th scope="col">Header</th>
+              <th scope="col">Email</th>
+              <th scope="col">Telefone</th>
               <th scope="col">Header</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="usuario in usuarios">
-              <td>{{usuario.usuario_id}}</td>
-              <td>random</td>
+            <tr v-for="(usuario,index) in usuarios" :key="index">
+              <td><div class="badge text-bg-secondary">{{index+1}}</div></td>
+              <td>{{usuario.pessoa_id}}</td>
+              <td>{{ usuario.nome }}</td>
               <td>{{ usuario.usuario }}</td>
-              <td>placeholder</td>
-              <td>text</td>
+              <td>{{ usuario.telefone }}</td>
+              <td><button type="button" class="btn btn-warning m-1">Editar</button>
+                <button type="button" class="btn btn-danger" v-if="usuario.pessoa_inativo == 0">Desativar</button>
+                <button type="button" class="btn btn-success" v-else>Ativar</button>
+              </td>
             </tr>
+            
             
            
            

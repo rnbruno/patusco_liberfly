@@ -21,7 +21,8 @@ Route::get('/', function () {
 // Route::get('/usuario/listar', function () {
 //     return Inertia::render('Usuario/Usuarios');
 // });
-Route::get('usuarios/listar',[UsuarioController::class, 'index'])->name('usuarios.index');
+Route::get('usuarios/listar',[UsuarioController::class, 'usuario_pessoa'])->name('usuarios.pessoa');
+
 
 
 Route::get('/customers/create',[CustomerController::class, 'create']);
