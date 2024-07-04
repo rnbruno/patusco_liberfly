@@ -6,6 +6,8 @@ use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\DB;
+
 
 class UsuarioController extends Controller
 {
@@ -28,6 +30,28 @@ class UsuarioController extends Controller
         return Inertia::render('Usuario/Usuarios', [
             'usuarios' => $usuarios
         ]);
+        // return Inertia::render('Usuario/Usuarios',[
+        //     'usuarios'=>Usuario::all()->map(function($usuarios){
+        //         return [
+        //             'usuario_id'=>$usuarios->usuario_id,
+        //             'nome'=>$usuarios->nome,
+        //         ];
+        //     })
+        // ]);
+    }
+
+    public function usuario_pessoa()
+    {
+        $results = DB::table('usuario')
+            ->join('pessoa','usuario.pessoa_id','=','pessoa.pessoa_id')
+            ->select('pessoa.nome as nome', 'usuario.*' , DB::raw("CONCAT(pessoa.telefone_1, '  ', pessoa.telefone_2) as telefone"),'pessoa.pessoa_id as pessoa_id','pessoa.inativo as pessoa_inativo')
+            ->get();
+        
+        // dd($results);
+        
+        return Inertia::render('Usuario/Usuarios', [
+            'usuarios' => $results
+        ]); 
         // return Inertia::render('Usuario/Usuarios',[
         //     'usuarios'=>Usuario::all()->map(function($usuarios){
         //         return [
