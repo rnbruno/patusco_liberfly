@@ -88,3 +88,19 @@ sudo apt-get install -y nodejs
 MIgrate
 php artisan migrate
 
+Translate PT-BR
+php artisan lang:publish
+composer require lucascudo/laravel-pt-br-localization --dev
+php artisan vendor:publish --tag=laravel-pt-br-localization
+
+
+// Altere Linha 85 do arquivo config/app.php para:
+'locale' => 'pt_BR'
+
+// Para versões 11.x altere a linha 8 do arquivo .env
+APP_LOCALE=pt_BR
+
+npm install sweetalert2
+
+php artisan make:controller --resource NomeDoController --model=NomeDoModel
+
