@@ -4,11 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
     "content-hash": "6b9dc7c9f34f5d904f454bbe75f3572b",
-=======
-    "content-hash": "eda1b72967c28f84988d5374d8de43d0",
->>>>>>> 59ad0d99e6c13cfb77bd7721699bb1bec172fcdf
+    // "content-hash": "eda1b72967c28f84988d5374d8de43d0",
     "packages": [
         {
             "name": "brick/math",
@@ -986,7 +983,6 @@
             "time": "2021-10-07T12:57:01+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "inertiajs/inertia-laravel",
             "version": "v1.3.0",
             "source": {
@@ -1063,8 +1059,6 @@
             "time": "2024-06-13T01:25:09+00:00"
         },
         {
-=======
->>>>>>> 59ad0d99e6c13cfb77bd7721699bb1bec172fcdf
             "name": "laravel/framework",
             "version": "v10.3.0",
             "source": {
@@ -5961,7 +5955,6 @@
             "time": "2023-03-06T14:23:15+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "lucascudo/laravel-pt-br-localization",
             "version": "v2.2.1",
             "source": {
@@ -6021,8 +6014,6 @@
             "time": "2024-05-09T13:57:11+00:00"
         },
         {
-=======
->>>>>>> 59ad0d99e6c13cfb77bd7721699bb1bec172fcdf
             "name": "maximebf/debugbar",
             "version": "v1.18.2",
             "source": {
@@ -8177,9 +8168,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-<<<<<<< HEAD
     "plugin-api-version": "2.6.0"
-=======
-    "plugin-api-version": "2.3.0"
->>>>>>> 59ad0d99e6c13cfb77bd7721699bb1bec172fcdf
 }
