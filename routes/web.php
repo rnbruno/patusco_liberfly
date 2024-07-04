@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\{ReplySupportController, SupportController};
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,6 +17,12 @@ Route::get('/', function () {
 // Route::get('/user', function () {
 //     return Inertia::render('Profile/Form');
 // });
+
+// Route::get('/usuario/listar', function () {
+//     return Inertia::render('Usuario/Usuarios');
+// });
+Route::get('usuarios/listar',[UsuarioController::class, 'index'])->name('usuarios.index');
+
 
 Route::get('/customers/create',[CustomerController::class, 'create']);
 Route::get('customers',[CustomerController::class, 'index'])->name('customers.index');
