@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-<<<<<<< HEAD
 
 .bd-placeholder-img {
     font-size: 1.125rem;
@@ -79,5 +78,3 @@
   .bd-mode-toggle .dropdown-menu .active .bi {
     display: block !important;
   }
-=======
->>>>>>> 59ad0d99e6c13cfb77bd7721699bb1bec172fcdf
