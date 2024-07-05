@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\ValidationException;
 
 class UsuarioController extends Controller
 {
@@ -62,6 +63,39 @@ class UsuarioController extends Controller
         // ]);
     }
 
+    public function desativarAtivarUsuario(Request $request): JsonResponse
+    {
+        // Processar a requisi��o
+        // $data = $request->all();
+        $data = $request->validate([
+            'pessoa_id' => 'required|integer',
+            'inativo' => 'required|boolean',
+        ]);
+
+       
+        // // Retornar uma resposta JSON
+        // return response()->json([
+        //     'message' => 'Requisição AJAX processada com sucesso!',
+        //     'data' => $data,
+        // ]); 
+        try {
+            // Encontrar o usuário pelo ID
+            $usuario = Usuario::findOrFail($data['pessoa_id']);
+
+            // Atualizar o campo pessoa_inativo com o valor recebido
+            $usuario->pessoa_inativo = $data['inativo'];
+            $usuario->save();
+
+            return response()->json(['message' => 'Usuário desativado com sucesso']);
+        } catch (ValidationException $e) {
+            return response()->json(['message' => 'Erro de validação', 'errors' => $e->errors()], 422);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Erro ao desativar usuário', 'error' => $e->getMessage()], 500);
+        }
+        
+    }
+
+    
     /**
      * Show the form for creating a new resource.
      */

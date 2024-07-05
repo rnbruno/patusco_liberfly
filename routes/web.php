@@ -23,6 +23,7 @@ Route::get('/', function () {
 //     return Inertia::render('Usuario/Usuarios');
 // });
 Route::get('usuarios/listar',[UsuarioController::class, 'usuario_pessoa'])->name('usuarios.pessoa');
+Route::post('/ajax-request-usuario', [UsuarioController::class, 'desativarAtivarUsuario']);
 
 
 

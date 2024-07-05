@@ -3,6 +3,7 @@
     import { useForm } from '@inertiajs/vue3';
     import {router} from '@inertiajs/vue3';
     import Swal from '../../plugins/sweetalert2';
+    import axios from 'axios';
 
     defineProps({
         usuarios: Object
@@ -39,13 +40,11 @@
               <td>{{ usuario.usuario }}</td>
               <td>{{ usuario.telefone }}</td>
               <td><button type="button" class="btn btn-warning m-1">Editar</button>
-                <button type="button" class="btn btn-danger" v-if="usuario.pessoa_inativo == 0">Desativar</button>
-                <button type="button" class="btn btn-success" v-else>Ativar</button>
+                <button type="button" class="btn btn-danger" @click="sendAjaxRequest(usuario.pessoa_id,usuario.pessoa_inativo)" v-if="usuario.pessoa_inativo == 0">Desativar</button>
+                <button type="button" class="btn btn-success"  @click="sendAjaxRequest(usuario.pessoa_id,usuario.pessoa_inativo)"  v-else>Ativar</button>
               </td>
             </tr>
-            
-            
-           
+                
            
             
             
@@ -58,6 +57,34 @@
 
 <script>
 export default {
-    name: 'Usuarios'
-}
+    name: 'Usuarios',
+    data() {
+    return {
+      message: ''
+    };
+  },
+  methods: {
+    sendAjaxRequest(pessoa_id,inativo) {
+      axios.post('/ajax-request-usuario', {
+        pessoa_id: pessoa_id,
+        inativo: inativo
+      })
+      .then(response => {
+        this.message = response.data.message;
+
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: this.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      })
+      .catch(error => {
+        console.error('Erro ao processar a requisição AJAX:', error);
+      });
+    }
+  }
+};
+
 </script>
