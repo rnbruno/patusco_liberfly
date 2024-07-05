@@ -40,13 +40,11 @@
               <td>{{ usuario.usuario }}</td>
               <td>{{ usuario.telefone }}</td>
               <td><button type="button" class="btn btn-warning m-1">Editar</button>
-                <button type="button" class="btn btn-danger" @click="sendAjaxRequest" v-if="usuario.pessoa_inativo == 0">Desativar</button>
-                <button type="button" class="btn btn-success"  @click="sendAjaxRequest"  v-else>Ativar</button>
+                <button type="button" class="btn btn-danger" @click="sendAjaxRequest(usuario.pessoa_id,usuario.pessoa_inativo)" v-if="usuario.pessoa_inativo == 0">Desativar</button>
+                <button type="button" class="btn btn-success"  @click="sendAjaxRequest(usuario.pessoa_id,usuario.pessoa_inativo)"  v-else>Ativar</button>
               </td>
             </tr>
-            
-
-           
+                
            
             
             
@@ -66,13 +64,21 @@ export default {
     };
   },
   methods: {
-    sendAjaxRequest() {
+    sendAjaxRequest(pessoa_id,inativo) {
       axios.post('/ajax-request-usuario', {
-        key1: 'value1',
-        key2: 'value2'
+        pessoa_id: pessoa_id,
+        inativo: inativo
       })
       .then(response => {
         this.message = response.data.message;
+
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: this.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
       })
       .catch(error => {
         console.error('Erro ao processar a requisição AJAX:', error);
