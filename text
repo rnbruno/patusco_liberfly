@@ -184,5 +184,5 @@ npm install sweetalert2
 
 php artisan make:controller --resource NomeDoController --model=NomeDoModel
 
+npm install vue-router
 
-    // "content-hash": "eda1b72967c28f84988d5374d8de43d0",
