@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\Site\SiteController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -30,10 +31,13 @@ Route::get('/customers/create',[CustomerController::class, 'create']);
 Route::get('customers',[CustomerController::class, 'index'])->name('customers.index');
 Route::post('customers',[CustomerController::class,'store']);
 
+Route::get('posts', [PostController::class, 'index']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::view('/','/dashboard')->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
