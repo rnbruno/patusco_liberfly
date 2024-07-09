@@ -10,7 +10,7 @@
     @inertiaHead
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluider">
       @inertia
     </div>
     

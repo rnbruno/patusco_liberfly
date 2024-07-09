@@ -8,6 +8,7 @@ use App\Repositories\{SupportEloquentORM};
 use App\Repositories\Contracts\{ReplyRepositoryInterface, SupportRepositoryInterface};
 use App\Repositories\Eloquent\ReplySupportRepository;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Support::observe(SupportObserver::class);
+        // Support::observe(SupportObserver::class);
+        JsonResource::withoutWrapping();
     }
 }

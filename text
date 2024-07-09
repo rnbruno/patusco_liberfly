@@ -7,6 +7,9 @@ docker images -a --format '{{.Repository}}:{{.Tag}}' | xargs docker rmi --force
 docker-compose up -d
 
 docker-compose exec app bash
+DROP DATABASE IF EXISTS curupira;
+CREATE DATABASE curupira CHARACTER SET utf8 DEFAULT CHARACTER SET utf8 COLLATE
+utf8_general_ci DEFAULT COLLATE utf8_general_ci;
 composer install
 php artisan key:generate
 

@@ -9,6 +9,8 @@ Route::post('/login', [AuthController::class, 'auth']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 
+Route::get('posts',[\App\Http\Controllers\Api\PostController::class, 'index']);
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/replies/{support_id}', [ReplySupportApiController::class, 'getRepliesFromSupport']);
     Route::post('/replies/{support_id}', [ReplySupportApiController::class, 'createNewReply']);

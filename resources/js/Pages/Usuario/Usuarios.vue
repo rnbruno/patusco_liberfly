@@ -39,9 +39,9 @@
               <td>{{ usuario.nome }}</td>
               <td>{{ usuario.usuario }}</td>
               <td>{{ usuario.telefone }}</td>
-              <td><button type="button" class="btn btn-warning m-1">Editar</button>
-                <button type="button" class="btn btn-danger" @click="sendAjaxRequest(usuario.pessoa_id,usuario.pessoa_inativo)" v-if="usuario.pessoa_inativo == 0">Desativar</button>
-                <button type="button" class="btn btn-success"  @click="sendAjaxRequest(usuario.pessoa_id,usuario.pessoa_inativo)"  v-else>Ativar</button>
+              <td><button type="button" class="btn btn-warning m-1" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Editar</button>
+                <button type="button" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" @click="sendAjaxRequest(usuario.pessoa_id,usuario.pessoa_inativo)" v-if="usuario.pessoa_inativo == 0">Desativar</button>
+                <button type="button" class="btn btn-success" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"  @click="sendAjaxRequest(usuario.pessoa_id,usuario.pessoa_inativo)"  v-else>Ativar</button>
               </td>
             </tr>
                 
@@ -81,7 +81,7 @@ export default {
         });
       })
       .catch(error => {
-        console.error('Erro ao processar a requisição AJAX:', error);
+        console.error('Erro ao processar a requisiï¿½ï¿½o AJAX:', error);
       });
     }
   }

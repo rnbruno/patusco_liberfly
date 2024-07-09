@@ -16,6 +16,13 @@ class PostController extends Controller
     {
         $posts = Usuario::all();
 
+        return Inertia('Posts/Index', compact('posts'));
+    }
+
+    public function dashboard()
+    {
+        $posts = Usuario::all();
+
         return Inertia('Post/Index', compact('posts'));
     }
 

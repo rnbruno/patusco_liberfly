@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
+use App\Models\Pessoa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\ValidationException;
+use App\Http\Resources\UsuarioPessoaResource;
 
 class UsuarioController extends Controller
 {
@@ -43,16 +45,11 @@ class UsuarioController extends Controller
 
     public function usuario_pessoa()
     {
-        $results = DB::table('usuario')
-            ->join('pessoa','usuario.pessoa_id','=','pessoa.pessoa_id')
-            ->select('pessoa.nome as nome', 'usuario.*' , DB::raw("CONCAT(pessoa.telefone_1, '  ', pessoa.telefone_2) as telefone"),'pessoa.pessoa_id as pessoa_id','pessoa.inativo as pessoa_inativo')
-            ->get();
+        $results = Usuario::getUsuarioPessoa();
         
         // dd($results);
         
-        return Inertia::render('Usuario/Usuarios', [
-            'usuarios' => $results
-        ]); 
+       
         // return Inertia::render('Usuario/Usuarios',[
         //     'usuarios'=>Usuario::all()->map(function($usuarios){
         //         return [
@@ -61,6 +58,42 @@ class UsuarioController extends Controller
         //         ];
         //     })
         // ]);
+        // Transform the results using the resource
+
+        return Inertia::render('Usuario/Usuarios', [
+            'usuarios' => $results
+        ]); 
+
+    }
+    public function usuarioPessoaJson()
+    {
+        $results = Usuario::getUsuarioPessoa();
+        
+        // dd($results);
+        
+        // return Inertia::render('Usuario/Usuarios', [
+        //     'usuarios' => $results
+        // ]); 
+        // return Inertia::render('Usuario/Usuarios',[
+        //     'usuarios'=>Usuario::all()->map(function($usuarios){
+        //         return [
+        //             'usuario_id'=>$usuarios->usuario_id,
+        //             'nome'=>$usuarios->nome,
+        //         ];
+        //     })
+        // ]);
+        // Transform the results using the resource
+        $usuarios = UsuarioPessoaResource::collection($results);
+
+        // Debugging the transformed data
+        // dd($usuarios);
+
+        // return Inertia::render('Usuario/Usuarios', [
+        //     'usuarios' => $usuarios
+        // ]);
+        return Inertia::render('Usuario/Usuarios', [
+            'usuarios' => UsuarioPessoaResource::collection($usuarios)
+        ]);
     }
 
     public function desativarAtivarUsuario(Request $request): JsonResponse
@@ -80,13 +113,14 @@ class UsuarioController extends Controller
         // ]); 
         try {
             // Encontrar o usuário pelo ID
-            $usuario = Usuario::findOrFail($data['pessoa_id']);
+            $usuario = Pessoa::findOrFail($data['pessoa_id']);
 
             // Atualizar o campo pessoa_inativo com o valor recebido
-            $usuario->pessoa_inativo = $data['inativo'];
+            $inativo = ($data['inativo'] == 0) ? 1 : 0;
+            $usuario->inativo = $inativo;
             $usuario->save();
-
-            return response()->json(['message' => 'Usuário desativado com sucesso']);
+            $mensagem = ($data['inativo'] == 1) ? 'Usuário desativado com sucesso' : 'Usuário ativado com sucesso';
+            return response()->json(['message' => $mensagem]);
         } catch (ValidationException $e) {
             return response()->json(['message' => 'Erro de validação', 'errors' => $e->errors()], 422);
         } catch (\Exception $e) {

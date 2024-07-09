@@ -1,10 +1,37 @@
-import './bootstrap';
+// import './bootstrap';
 
-<<<<<<< HEAD
-import { createApp, h } from 'vue';
+// import { createApp, h } from 'vue';
+// import { createInertiaApp } from '@inertiajs/vue3';
+// import { InertiaProgress } from '@inertiajs/progress';
+
+
+// createInertiaApp({
+//   resolve: name => {
+//     const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
+//     return pages[`./Pages/${name}.vue`]
+//   },
+//   setup({ el, App, props, plugin }) {
+//     createApp({ render: () => h(App, props) })
+//       .use(plugin)
+//       .mount(el)
+//   },
+// })
+
+// InertiaProgress.init();
+
+
+require('./bootstrap');
+
+import { createApp, h, onMounted } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { InertiaProgress } from '@inertiajs/progress';
-
+import LaravelVuePagination from 'laravel-vue-pagination';
+import VueSweetalert2 from "vue-sweetalert2";
+import useAuth from "./Pages/composables/auth";
+import { abilitiesPlugin } from '@casl/vue';
+import ability from './Pages/services/ability';
+import Select2 from 'vue3-select2-component';
+import router from './routes/index'; // Certifique-se de que o arquivo router.js existe
 
 createInertiaApp({
   resolve: name => {
@@ -12,17 +39,22 @@ createInertiaApp({
     return pages[`./Pages/${name}.vue`]
   },
   setup({ el, App, props, plugin }) {
-    createApp({ render: () => h(App, props) })
-      .use(plugin)
-      .mount(el)
+    const app = createApp({ 
+      render: () => h(App, props),
+      setup() {
+        const { getUser } = useAuth()
+        onMounted(getUser)
+      }
+    });
+
+    app.use(plugin);
+    app.use(router);
+    app.use(VueSweetalert2); // Uso do plugin VueSweetalert2
+    app.use(abilitiesPlugin, ability); // Uso do plugin @casl/vue
+    app.component('Pagination', LaravelVuePagination); // Registro do componente
+    app.component('Select2', Select2);
+    app.mount(el);
   },
 })
 
 InertiaProgress.init();
-=======
-import Alpine from 'alpinejs';
-
-window.Alpine = Alpine;
-
-Alpine.start();
->>>>>>> 59ad0d99e6c13cfb77bd7721699bb1bec172fcdf
