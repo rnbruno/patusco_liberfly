@@ -7,7 +7,7 @@
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
-        "@vitejs/plugin-vue": "^4.0.0",
+        "@vitejs/plugin-vue": "^4.6.2",
         "alpinejs": "^3.4.2",
         "autoprefixer": "^10.4.2",
         "axios": "^1.1.2",
@@ -21,7 +21,6 @@
         "@casl/vue": "^2.2.2",
         "@inertiajs/progress": "^0.1.2",
         "@inertiajs/vue3": "^1.2.0",
-        "@vitejs/plugin-vue": "^5.0.5",
         "laravel-vue-pagination": "^3.0.0",
         "sweetalert2": "^11.6.13",
         "vee-validate": "^4.5.10",
