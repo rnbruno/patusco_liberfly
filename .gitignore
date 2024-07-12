@@ -17,3 +17,5 @@
 package-lock.json
 package.json
 node_modules
+/.docker/mariadb/dbdata/
+

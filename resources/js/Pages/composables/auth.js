@@ -2,6 +2,9 @@ import { ref, reactive, inject } from 'vue'
 import { useRouter } from "vue-router";
 import { AbilityBuilder, Ability } from '@casl/ability';
 import { ABILITY_TOKEN } from '@casl/vue';
+import axios from 'axios';
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.withCredentials = true;
 
 const user = reactive({
     name: '',
