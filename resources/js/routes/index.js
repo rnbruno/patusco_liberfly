@@ -1,17 +1,18 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import AuthenticatedLayout from "../Pages/layouts/Authenticated.vue";
-import GuestLayout from "../Pages/layouts/Guest.vue";
+import AuthenticatedLayout from "../layouts/Authenticated.vue";
+import GuestLayout from "../layouts/Guest.vue";
 
-import PostsIndex from '../Pages/components/Posts/Index.vue'
-import PostsCreate from '../Pages/components/Posts/Create.vue'
-import PostsEdit from '../Pages/components/Posts/Edit.vue'
-import Usuarios from '../Pages/Usuario/Usuarios.vue'
-import Login from '../Pages/components/Login.vue'
+import PostsIndex from '../components/Posts/Index.vue'
+import PostsCreate from '../components/Posts/Create.vue'
+import PostsEdit from '../components/Posts/Edit.vue'
+import Usuarios from '../Usuario/Usuarios.vue'
+import Login from '../components/Login.vue'
 
  const Home = { template: "<div>Home</div>"};
  const About = { template: "<div>About</div>"};
  const Product = { template: "<div>Product</div>"};
+ import LayoutComponent from '../layouts/Layout.vue';
 // function auth(to, from, next) {
 //     if (JSON.parse(localStorage.getItem('loggedIn'))) {
 //         next()
@@ -63,15 +64,20 @@ import Login from '../Pages/components/Login.vue'
 //             },
 //         ]
 //     }
-// ]
+// ] path: '/login',
+//                 name: 'login',
+//                 component: Login
 
 const routes = [
-    { path: "/", component: Home },
+    { path: "/", name: 'Layout', component: LayoutComponent },
     { path: "/about", component: About},
-    { path: "/product", component: Product}
+    { path: "/product", component: Product},
+    { path: "/dasboard", component: Product}
 ]
 
-export default createRouter({
+const router = createRouter({
     history: createWebHistory(),
     routes
 })
+
+export default router;

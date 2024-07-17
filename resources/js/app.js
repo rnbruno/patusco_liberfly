@@ -61,12 +61,13 @@
 
 
 // require('./bootstrap');
-
+import './bootstrap';
 import {createApp, onMounted} from 'vue'
-import LaravelVuePagination from 'laravel-vue-pagination';
-import router from './routes/index'
+// import LaravelVuePagination from 'laravel-vue-pagination';
+import AppComponent from './App.vue';
+import router from './routes/'
 import VueSweetalert2 from "vue-sweetalert2";
-import useAuth from "./Pages/composables/auth";
+import useAuth from "./composables/auth";
 import { abilitiesPlugin } from '@casl/vue';
 // import ability from './Pages/services/ability';
 // import Select2 from 'vue3-select2-component';
@@ -77,10 +78,13 @@ const app = createApp({
     //     const { getUser } = useAuth()
     //     onMounted(getUser)
     // }
+    components:{
+      AppComponent
+    }
 })
 app.use(router)
 app.use(VueSweetalert2)
 // app.use(abilitiesPlugin, ability)
-app.component('Pagination', LaravelVuePagination)
+// app.component('Pagination', LaravelVuePagination)
 // app.component('Select2', Select2)
 app.mount('#app')

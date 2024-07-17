@@ -61,9 +61,13 @@ Route::post('login', [
 Route::post('logout', [
     \App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'destroy']);
 
-Route::view('/{any?}', 'dashboard')
-    ->name('dashboard')
-    ->where('any', '.*');
+// Route::view('/{any?}', 'dashboard')
+//     ->name('dashboard')
+//     ->where('any', '.*');
+
+Route::get('/{any}', function () {
+    return view('layouts/app');
+})->where("any", ".*");
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
