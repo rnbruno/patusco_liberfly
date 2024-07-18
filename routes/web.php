@@ -65,9 +65,12 @@ Route::post('logout', [
 //     ->name('dashboard')
 //     ->where('any', '.*');
 
-Route::get('/{any}', function () {
-    return view('layouts/app');
-})->where("any", ".*");
+// Route::get('/{any}', function () {
+//     return view('layouts/app');
+// })->where("any", ".*");
+
+Route::view('/{any}', 'dashboard')
+    ->where('any', '.*');
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

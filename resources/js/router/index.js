@@ -1,18 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import AuthenticatedLayout from "../layouts/Authenticated.vue";
-import GuestLayout from "../layouts/Guest.vue";
+// import AuthenticatedLayout from "../layouts/Authenticated.vue";
+// import GuestLayout from "../layouts/Guest.vue";
 
-import PostsIndex from '../components/Posts/Index.vue'
-import PostsCreate from '../components/Posts/Create.vue'
-import PostsEdit from '../components/Posts/Edit.vue'
-import Usuarios from '../Usuario/Usuarios.vue'
-import Login from '../components/Login.vue'
+// import PostsIndex from '../components/Posts/Index.vue'
+// import PostsCreate from '../components/Posts/Create.vue'
+// import PostsEdit from '../components/Posts/Edit.vue'
+// import Usuarios from '../Usuario/Usuarios.vue'
+// import Login from '../components/Login.vue'
 
  const Home = { template: "<div>Home</div>"};
  const About = { template: "<div>About</div>"};
  const Product = { template: "<div>Product</div>"};
  import LayoutComponent from '../layouts/Layout.vue';
+
+import AcessoIndex from '../components/AcessoIndex.vue'
 // function auth(to, from, next) {
 //     if (JSON.parse(localStorage.getItem('loggedIn'))) {
 //         next()
@@ -69,7 +71,8 @@ import Login from '../components/Login.vue'
 //                 component: Login
 
 const routes = [
-    { path: "/", name: 'Layout', component: LayoutComponent },
+    { path: "/", name: 'acesso2.index', component: AcessoIndex },
+    { path: "/acessosIndex", name: 'acesso.index', component: AcessoIndex },
     { path: "/about", component: About},
     { path: "/product", component: Product},
     { path: "/dasboard", component: Product}

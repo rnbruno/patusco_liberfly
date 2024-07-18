@@ -20,6 +20,14 @@ class AcessoController extends Controller
         return AcessoResource::collection($acesso);
     }
 
+    public function acesso12()
+    {
+        $acesso = Acesso::getAcessoPessoa12Meses();
+        // dd($acesso); // Verifique se os dados estão corretos  
+        return AcessoResource::collection($acesso);
+    }
+
+
     /**
      * Store a newly created resource in storage.
      */

@@ -62,10 +62,14 @@
 
 // require('./bootstrap');
 import './bootstrap';
+import Alpine from 'alpinejs';
+window.Alpine = Alpine;
+Alpine.start();
+
 import {createApp, onMounted} from 'vue'
 // import LaravelVuePagination from 'laravel-vue-pagination';
-import AppComponent from './App.vue';
-import router from './routes/'
+import AcessosIndex from './components/AcessoIndex.vue';
+import router from './router'
 import VueSweetalert2 from "vue-sweetalert2";
 import useAuth from "./composables/auth";
 import { abilitiesPlugin } from '@casl/vue';
@@ -79,7 +83,7 @@ const app = createApp({
     //     onMounted(getUser)
     // }
     components:{
-      AppComponent
+      AcessosIndex
     }
 })
 app.use(router)

@@ -42,3 +42,7 @@ Route::apiResource('acesso', AcessoController::class)->names([
     'index' => 'acesso.index'
 ]);
 
+Route::apiResource('acesso12', AcessoController::class)->names([
+    'index1' => 'acesso12.index1'
+]);
+

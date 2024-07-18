@@ -64,3 +64,8 @@
 
 # // Exibir a consulta SQL completa
 # dd($fullSql);
+# Route::apiResource('acesso12', AcessoController::class)->names([
+#     'index' => 'acesso12.index'
+# ]);
+
+# o acesso12 é o método da função AcessoController
