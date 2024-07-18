@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\CartaoController;
 use App\Http\Controllers\Api\UsuarioApiController;
+use App\Http\Controllers\Api\AcessoController;
 
 
 // Route::post('/login', [AuthController::class, 'auth']);
@@ -36,3 +37,8 @@ Route::apiResource('cartao', CartaoController::class)->names([
 Route::apiResource('usuarios_json', UsuarioApiController::class)->names([
     'index' => 'usuarios_json.usuarioPessoaJson'
 ]);
+
+Route::apiResource('acesso', AcessoController::class)->names([
+    'index' => 'acesso.index'
+]);
+

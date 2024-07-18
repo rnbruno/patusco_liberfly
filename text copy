@@ -51,3 +51,16 @@
 #     }
 # }
 # git rm -r --cached .
+
+# dd($query->toSql());
+
+# $sql = $query->toSql();
+
+# // Obter os valores dos bindings
+# $bindings = $query->getBindings();
+
+# // Substituir os valores dos bindings na consulta SQL
+# $fullSql = Str::replaceArray('?', $bindings, $sql);
+
+# // Exibir a consulta SQL completa
+# dd($fullSql);
