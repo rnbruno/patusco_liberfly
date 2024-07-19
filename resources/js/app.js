@@ -63,6 +63,8 @@
 // require('./bootstrap');
 import './bootstrap';
 import Alpine from 'alpinejs';
+import '@fortawesome/fontawesome-free/css/all.css';
+
 window.Alpine = Alpine;
 Alpine.start();
 
@@ -73,6 +75,8 @@ import router from './router'
 import VueSweetalert2 from "vue-sweetalert2";
 import useAuth from "./composables/auth";
 import { abilitiesPlugin } from '@casl/vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// import { byPrefixAndName } from '@awesome.me/kit-KIT_CODE/icons'
 // import ability from './Pages/services/ability';
 // import Select2 from 'vue3-select2-component';
 
@@ -88,6 +92,8 @@ const app = createApp({
 })
 app.use(router)
 app.use(VueSweetalert2)
+app.use(FontAwesomeIcon)
+// app.use(byPrefixAndName)
 // app.use(abilitiesPlugin, ability)
 // app.component('Pagination', LaravelVuePagination)
 // app.component('Select2', Select2)
