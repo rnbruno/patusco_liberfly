@@ -3,6 +3,7 @@ import { useRouter } from "vue-router";
 import { AbilityBuilder, Ability } from '@casl/ability';
 import { ABILITY_TOKEN } from '@casl/vue';
 import axios from 'axios';
+
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.withCredentials = true;
 
@@ -55,6 +56,9 @@ export default function useAuth() {
             .then(response => {
                 loginUser(response)
             })
+            .catch(error => {
+                console.error(error);
+            });
     }
 
     const logout = async () => {

@@ -54,6 +54,9 @@
 
 # dd($query->toSql());
 
+# npm install @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/free-brands-svg-icons @fortawesome/vue-fontawesome
+
+
 # $sql = $query->toSql();
 
 # // Obter os valores dos bindings
