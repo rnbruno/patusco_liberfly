@@ -74,3 +74,5 @@
 # o acesso12 é o método da função AcessoController
 
 php artisan route:list
+
+# npm install ziggy-js

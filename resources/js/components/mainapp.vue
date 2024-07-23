@@ -30,8 +30,9 @@
 
 
                         <!--~~~ MENU LIST ~~~~~~-->
-                        <div class="_1side_menu_list">
-                            <ul class="list-unstyled ps-0">
+                        <div class="">
+                            <ul
+                                class=" px-1 pt-1 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out ps-0">
                                 <!-- <li v-for="(menuItem, i) in permission" :key="i" v-if="permission.length && menuItem.read">
                     <router-link :to="'/'+menuItem.name"><Icon type="ios-speedometer" /> {{menuItem.resourceName}}</router-link>
                 </li> -->
@@ -55,18 +56,31 @@
                                         </ul>
                                     </div>
                                 </li>
-                                
 
-                                <li><router-link to="/contas">
-                                        <Icon type="ios-speedometer" /> Contas
+
+                                <li><router-link active-class="border-b-2 border-indigo-400"
+                                        class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out"
+                                        to="/contas" >
+                                        Contas
                                     </router-link></li>
-                                <li><router-link to="/acesso/index">
+                                <li><router-link active-class="border-b-2 border-indigo-400"
+                                        class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out"
+                                        to="/acesso/index">
                                         <Icon type="ios-speedometer" /> Acesso
                                     </router-link></li>
-                                <li><router-link to="adminusers">
+                                    <li><router-link active-class="border-b-2 border-indigo-400"
+                                        class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out"
+                                        to="/login">
+                                        <Icon type="ios-speedometer" /> Login
+                                    </router-link></li>
+                                <li><router-link active-class="border-b-2 border-indigo-400"
+                                        class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out"
+                                        to="adminusers">
                                         <Icon type="ios-speedometer" /> Admin users
                                     </router-link></li>
-                                <li><router-link to="role">
+                                <li><router-link active-class="border-b-2 border-indigo-400"
+                                        class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out"
+                                        to="role">
                                         <Icon type="ios-speedometer" /> Role Management
                                     </router-link></li>
                                 <li><router-link to="cartaoIndex">
@@ -77,6 +91,17 @@
                                 <li><a href="/logout">
                                         <Icon type="ios-speedometer" /> Logout
                                     </a></li>
+                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <router-link :to="{ name: 'acesso.index' }"
+                                        active-class="border-b-2 border-indigo-400"
+                                        class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
+                                        Posts
+                                    </router-link>
+                                    <router-link :to="{ name: 'about' }" active-class="border-b-2 border-indigo-400"
+                                        class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
+                                        Create Post
+                                    </router-link>
+                                </div>
                             </ul>
                         </div>
                     </div>
@@ -91,11 +116,19 @@
 
 <script>
 console.log('MainApp component mounted');
+
+import { usePage } from '@inertiajs/inertia-vue3'
+
 export default {
 
     name: 'mainapp',
 
-
+    setup() {
+        const { props } = usePage()
+        return {
+        pageProps: props,
+        }
+    },
     mounted() {
         console.log('MainApp component mounted');
     },

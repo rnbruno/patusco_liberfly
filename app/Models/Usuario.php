@@ -40,4 +40,19 @@ class Usuario extends Model
             )
             ->get();
     }
+    public static function getUsuarioPassW()
+    {
+        return DB::table('usuario')
+            ->join('pessoa', 'usuario.pessoa_id', '=', 'pessoa.pessoa_id')
+            ->select(
+                'pessoa.nome as nome', 
+                'usuario.*',
+                DB::raw("CONCAT(pessoa.telefone_1, ' ', pessoa.telefone_2) as telefone"),
+                'pessoa.pessoa_id as pessoa_id',
+                'pessoa.inativo as pessoa_inativo'
+            )
+            ->where('usuario', $this->$usuario)
+            ->where('senha', $this->$senha)
+            ->get();
+    }
 }

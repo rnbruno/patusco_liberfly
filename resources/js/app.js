@@ -21,6 +21,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // Importa o CSS do Font Awesome
+import { InertiaProgress } from '@inertiajs/progress';
 
 
 library.add(fas, fab);
@@ -43,8 +44,17 @@ app.use(router)
 app.use(VueSweetalert2)
 app.use(library)
 app.use(FontAwesomeIcon)
+app.use(InertiaProgress);
 // app.use(abilitiesPlugin, ability)
 app.component('Pagination', LaravelVuePagination)
 // app.component('Select2', Select2)
 app.mount('#app')
 // console.log('Vue.js app initialized');
+
+// Inicializa o Inertia Progress com configurações personalizadas
+InertiaProgress.init({
+  delay: 250,
+  color: '#29d',
+  includeCSS: true,
+  showSpinner: true,
+})

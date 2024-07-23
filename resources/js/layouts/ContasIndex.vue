@@ -116,6 +116,7 @@ import useContas from '@/composables/contas';
 import Swal from 'sweetalert2';
 import Modal from '../modal/EditConta.vue';
 import ModalAdd from '../modal/GeneralModal.vue';
+import { usePage } from '@inertiajs/inertia-vue3'
 
 export default {
   
@@ -140,6 +141,8 @@ data() {
 },
 setup() {
   const { contas, getContas, updateContas } = useContas();
+  const { props } = usePage();
+  console.log(props) 
 
   onMounted(async () => {
     await getContas();
@@ -211,7 +214,8 @@ setup() {
     contas,
     desactiveconta,
     activeconta,
-    atualizarCount
+    atualizarCount,
+    pageProps: props,
   };
 
 },
