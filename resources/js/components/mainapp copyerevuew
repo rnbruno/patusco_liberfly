@@ -47,11 +47,11 @@
                                 <img :src="logoUrl" style="width:50px" alt="Logo">
                             </a>
                         </div>
-                        <div class="brand-name-wrapper sidebar-content">
-                            <a class="navbar-brand" href="#">
-                                SAITAMA
-                            </a>
-                        </div>
+                    </div>
+                    <div class="brand-name-wrapper sidebar-content">
+                        <a class="navbar-brand" href="#">
+                            SAITAMA
+                        </a>
                     </div>
                 </div>
             </div>
@@ -104,20 +104,11 @@
             </div><!-- /.navbar-collapse -->
         </nav>
     </div>
-    <div class="mcw">
-        <!--navigation here-->
-        <!--main content view-->
-        <div class="cv">
-            <div>
-                <div class="inbox">
-                    <div class="inbox-sb">
+    <div class="row">
 
-                        <div class="col-8 m-2 frame_">
-                            <router-view />
-                        </div>
-                    </div>
-                </div>
-            </div>
+    
+        <div class="col-8 m-2 frame_">
+            <router-view />
         </div>
     </div>
 </template>

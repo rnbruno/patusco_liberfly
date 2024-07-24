@@ -25,15 +25,15 @@ import { InertiaProgress } from '@inertiajs/progress';
 
 
 library.add(fas, fab);
-// import ability from './Pages/services/ability';
+import ability from './services/ability';
 // import Select2 from 'vue3-select2-component';
 
 
 const app = createApp({
-    // setup() {
-    //     const { getUser } = useAuth()
-    //     onMounted(getUser)
-    // }
+    setup() {
+        const { getUser } = useAuth()
+        onMounted(getUser)
+    },
     components:{
       MainApp
     }
@@ -45,7 +45,7 @@ app.use(VueSweetalert2)
 app.use(library)
 app.use(FontAwesomeIcon)
 app.use(InertiaProgress);
-// app.use(abilitiesPlugin, ability)
+app.use(abilitiesPlugin, ability)
 app.component('Pagination', LaravelVuePagination)
 // app.component('Select2', Select2)
 app.mount('#app')
