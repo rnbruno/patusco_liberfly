@@ -8,7 +8,6 @@ import PostsCreate from '../components/Posts/Create.vue'
 import PostsEdit from '../components/Posts/Edit.vue'
 import Usuarios from '../Usuario/Usuarios.vue'
 // import Login from '../components/Login.vue'
-import { isAuthenticated } from '@/auth'
 
 const Home = { template: "<div>Home</div>" };
 const About = { template: "<div>About</div>" };
@@ -23,11 +22,12 @@ import Login from '../components/Login.vue';
 import Index from '../components/Posts/Index.vue';
 
 function auth(to, from, next) {
+    console.log(localStorage.getItem('loggedIn'))
     if (JSON.parse(localStorage.getItem('loggedIn'))) {
         next()
     }
 
-    next('/login')
+    next('/home')
 }
 
 const routes = [
@@ -65,7 +65,7 @@ const routes = [
                 component: PostsEdit,
                 meta: { title: 'Edit post' }
             },
-            { path: "/", name: 'home', component: AcessoIndex },
+            { path: "/", name: 'home', component: GuestLayout },
             { path: "/acessosIndex", name: 'acesso.index', component: AcessoIndex },
             { path: "/about", name: 'about', component: About },
             { path: "/product", component: Product },

@@ -1,3 +1,4 @@
+console.log("aq")
 import { ref, reactive, inject } from 'vue'
 import { useRouter } from "vue-router";
 import { AbilityBuilder, Ability } from '@casl/ability';
@@ -30,7 +31,6 @@ export default function useAuth() {
 
         processing.value = true
         validationErrors.value = {}
-
         axios.post('/login', loginForm)
             .then(async response => {
                 loginUser(response)

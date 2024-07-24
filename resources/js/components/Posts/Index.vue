@@ -130,6 +130,8 @@ import useCategories from "../../composables/categories";
 import { useAbility } from '@casl/vue'
 
 export default {
+    name: 'Post.index',
+
     setup() {
         const search_category = ref('')
         const search_id = ref('')
@@ -202,16 +204,16 @@ export default {
             )
         })
 
-        watch(search_global, _.debounce((current, previous) => {
-            getPosts(
-                1,
-                search_category.value,
-                search_id.value,
-                search_title.value,
-                search_content.value,
-                current
-            )
-        }, 200))
+        // watch(search_global, _.debounce((current, previous) => {
+        //     getPosts(
+        //         1,
+        //         search_category.value,
+        //         search_id.value,
+        //         search_title.value,
+        //         search_content.value,
+        //         current
+        //     )
+        // }, 200))
 
         return {
             posts,
