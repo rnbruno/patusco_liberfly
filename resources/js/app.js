@@ -10,7 +10,7 @@ Alpine.start();
 
 import {createApp, onMounted} from 'vue'
 import LaravelVuePagination from 'laravel-vue-pagination';
-import MainApp from './components/mainapp.vue';
+// import MainApp from './components/mainapp.vue';
 import router from './router'
 import VueSweetalert2 from "vue-sweetalert2";
 import useAuth from "./composables/auth";
@@ -34,11 +34,8 @@ const app = createApp({
         const { getUser } = useAuth()
         onMounted(getUser)
     },
-    components:{
-      MainApp
-    }
 })
-app.component('mainapp', MainApp);
+// app.component('mainapp', MainApp);
 app.component('font-awesome-icon', FontAwesomeIcon);
 app.use(router)
 app.use(VueSweetalert2)

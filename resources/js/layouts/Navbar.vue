@@ -18,9 +18,6 @@
 </template>
 <script>
 export default {
-    name: 'Layout',
-    components:{
-        Usuarios,
-    }
+    name: 'Navbar',
 }
 </script>

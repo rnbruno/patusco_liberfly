@@ -7,7 +7,7 @@ import PostsIndex from '../components/Posts/Index.vue'
 import PostsCreate from '../components/Posts/Create.vue'
 import PostsEdit from '../components/Posts/Edit.vue'
 import Usuarios from '../Usuario/Usuarios.vue'
-// import Login from '../components/Login.vue'
+import Login from '../components/Login.vue'
 
 const Home = { template: "<div>Home</div>" };
 const About = { template: "<div>About</div>" };
@@ -18,30 +18,55 @@ import AcessoIndex from '../components/AcessoIndex.vue';
 import MainApp from '../components/mainapp.vue';
 import ContasIndex from '../layouts/ContasIndex.vue';
 import CartaoIndex from '../Usuario/Cartao.vue';
-import Login from '../components/Login.vue';
 import Index from '../components/Posts/Index.vue';
 
 function auth(to, from, next) {
-    console.log(localStorage.getItem('loggedIn'))
-    if (JSON.parse(localStorage.getItem('loggedIn'))) {
+    const loggIn = JSON.parse(localStorage.getItem('loggedIn'));
+    if (loggIn) {
+        console.log("ssse")
         next()
+    }else{
+        if (to.name == 'login'){
+            next({name: 'login'});
+        }else if (to.name == 'logout'){
+            next({name: 'logout'});
+        }else{
+            console.log("fdfd");
+            next({name: 'layout'});
+        }
     }
+    console.log(localStorage.getItem('loggedIn'))
 
-    next('/home')
 }
 
 const routes = [
     {
         path: '/',
-        redirect: { name: 'login' },
+        name: 'layout',
         component: GuestLayout,
         children: [
             {
                 path: '/login',
-                name: 'login',
+                name: 'login1',
                 component: Login
             },
+            {
+                path: '/home',
+                name: 'conta1',  component: LayoutComponent 
+            },
         ]
+    },
+    {
+        path: '/login',
+        redirect: { name: 'login' },
+        component: Login,
+
+    },
+    {
+        path: '/logout',
+        redirect: { name: 'logout' },
+        component: Index,
+
     },
     {
         component: AuthenticatedLayout,
@@ -50,7 +75,7 @@ const routes = [
             {
                 path: '/posts',
                 name: 'posts.index',
-                component: PostsIndex,
+                component: ContasIndex,
                 meta: { title: 'Posts' }
             },
             {
@@ -70,9 +95,8 @@ const routes = [
             { path: "/about", name: 'about', component: About },
             { path: "/product", component: Product },
             { path: "/dasboard", component: Product },
-            { path: "/contas", component: ContasIndex },
+            { path: "/contas", name: 'conta',  component: ContasIndex },
             { path: "/cartao", name: 'cartaoIndex', component: CartaoIndex },
-            { path: "/login", name: 'login', component: Login },
             { path: "/index", name: 'index', component: Index }
         ]
     }

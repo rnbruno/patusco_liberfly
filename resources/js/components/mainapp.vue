@@ -61,8 +61,13 @@
 
                     <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                     <li class="active"><a href="#"><i class="fa fa-puzzle-piece"></i> Components</a></li>
+                    <router-link :to="{ name: 'conta' }">Contas</router-link>
+                    <router-link :to="{ name: 'conta' }">Contas</router-link>
+                    <Link href="/contas" :class="{ 'active': $page.url === '/contas' }">Contas</Link>
+                    <Link href="/">Home</Link>
+                    <Link href="/about">About</Link>
+                    <Link href="/contact">Contact</Link>
                     <li><a href="#"><i class="fa fa-heart"></i> Extras</a></li>
-
                     <!-- Dropdown-->
                     <li class="panel panel-default" id="dropdown">
                         <a data-toggle="collapse" href="#dropdown-lvl1">
@@ -126,8 +131,6 @@
 console.log('MainApp component mounted');
 
 import { usePage } from '@inertiajs/inertia-vue3'
-
-
 
 export default {
 
