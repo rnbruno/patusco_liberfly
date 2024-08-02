@@ -23,7 +23,6 @@ import Index from '../components/Posts/Index.vue';
 function auth(to, from, next) {
     const loggIn = JSON.parse(localStorage.getItem('loggedIn'));
     if (loggIn) {
-        console.log("ssse")
         next()
     }else{
         if (to.name == 'login'){
@@ -31,7 +30,6 @@ function auth(to, from, next) {
         }else if (to.name == 'logout'){
             next({name: 'logout'});
         }else{
-            console.log("fdfd");
             next({name: 'layout'});
         }
     }
@@ -49,10 +47,6 @@ const routes = [
                 path: '/login',
                 name: 'login1',
                 component: Login
-            },
-            {
-                path: '/home',
-                name: 'conta1',  component: LayoutComponent 
             },
         ]
     },

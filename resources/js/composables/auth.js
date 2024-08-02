@@ -46,7 +46,7 @@ export default function useAuth() {
     const loginUser = async (response) => {
         user.name = response.data.name
         user.email = response.data.email
-        localStorage.setItem('loggedIn', JSON.stringify(false))
+        localStorage.setItem('loggedIn', JSON.stringify(true))
         await getAbilities()
         // await router.push({ name: 'posts.index' })
     }
