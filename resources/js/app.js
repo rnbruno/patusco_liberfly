@@ -17,6 +17,7 @@ import { abilitiesPlugin } from '@casl/vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // Importar ícones específicos
+import vuetify from '../js/vuetify/index';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // Importa o CSS do Font Awesome
@@ -41,6 +42,7 @@ app.use(VueSweetalert2)
 app.use(library)
 app.use(FontAwesomeIcon)
 app.use(InertiaProgress);
+app.use(vuetify); // Usa o Vuetify
 app.use(abilitiesPlugin, ability)
 app.component('Pagination', LaravelVuePagination)
 app.mount('#app')

@@ -30,7 +30,7 @@ function auth(to, from, next) {
         }else if (to.name == 'logout'){
             next({name: 'logout'});
         }else{
-            next({name: 'layout'});
+           next({name: 'layout'});
         }
     }
     console.log(localStorage.getItem('loggedIn'))
@@ -42,26 +42,20 @@ const routes = [
         path: '/',
         name: 'layout',
         component: GuestLayout,
-        children: [
-            {
-                path: '/login',
-                name: 'login1',
-                component: Login
-            },
-        ]
     },
     {
         path: '/login',
-        redirect: { name: 'login' },
+        name: 'login',
         component: Login,
-
-    },
-    {
-        path: '/logout',
-        redirect: { name: 'logout' },
-        component: Index,
-
-    },
+        children: [
+            {
+                path: '/posts',
+                name: 'posts.index',
+                component: ContasIndex,
+                meta: { title: 'Posts' }
+            },
+        ]
+    },    
     {
         component: AuthenticatedLayout,
         beforeEnter: auth,
