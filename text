@@ -189,3 +189,7 @@ php artisan make:controller --resource NomeDoController --model=NomeDoModel
 
 npm install vue-router
 
+npm install vite-plugin-vuetify
+
+npm install vite@latest
+

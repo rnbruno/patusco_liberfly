@@ -47,14 +47,7 @@ const routes = [
         path: '/login',
         name: 'login',
         component: Login,
-        children: [
-            {
-                path: '/posts',
-                name: 'posts.index',
-                component: ContasIndex,
-                meta: { title: 'Posts' }
-            },
-        ]
+        
     },    
     {
         component: AuthenticatedLayout,
