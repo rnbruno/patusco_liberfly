@@ -15,7 +15,7 @@ class MarcacoesTableSeeder extends Seeder
     {
         DB::table('marcacoes')->insert([
             [
-                'animals_user_id' => 1, // Substitua por um ID válido de 'animals_user'
+                'animals_user_id' => 7, // Substitua por um ID válido de 'animals_user'
                 'medical_id' => 1, // Substitua por um ID válido de 'medical'
                 'marcacao_date' => '2024-08-02 09:00:00',
                 'reason' => 'Check-up anual',
@@ -24,7 +24,7 @@ class MarcacoesTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'animals_user_id' => 2, // Substitua por um ID válido de 'animals_user'
+                'animals_user_id' => 8, // Substitua por um ID válido de 'animals_user'
                 'medical_id' => 2, // Substitua por um ID válido de 'medical'
                 'marcacao_date' => '2024-08-03 10:30:00',
                 'reason' => 'Vacinação',
@@ -33,7 +33,7 @@ class MarcacoesTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'animals_user_id' => 3, // Substitua por um ID válido de 'animals_user'
+                'animals_user_id' => 9, // Substitua por um ID válido de 'animals_user'
                 'medical_id' => 3, // Substitua por um ID válido de 'medical'
                 'marcacao_date' => '2024-08-04 11:00:00',
                 'reason' => 'Consulta de emergência',
@@ -42,7 +42,7 @@ class MarcacoesTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'animals_user_id' => 4, // Substitua por um ID válido de 'animals_user'
+                'animals_user_id' => 6, // Substitua por um ID válido de 'animals_user'
                 'medical_id' => 4, // Substitua por um ID válido de 'medical'
                 'marcacao_date' => '2024-08-05 12:00:00',
                 'reason' => 'Exame de sangue',
@@ -51,7 +51,7 @@ class MarcacoesTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'animals_user_id' => 5, // Substitua por um ID válido de 'animals_user'
+                'animals_user_id' => 10, // Substitua por um ID válido de 'animals_user'
                 'medical_id' => 5, // Substitua por um ID válido de 'medical'
                 'marcacao_date' => '2024-08-06 14:00:00',
                 'reason' => 'Consulta de rotina',

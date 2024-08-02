@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('animals_user', function (Blueprint $table) {
+        Schema::create('type_animals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('animal_id');
+            $table->string('type_name');
             $table->timestamps();
-
-
-            });
+        });
     }
 
     /**
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('animals_user');
+        Schema::dropIfExists('type_animals');
     }
 };

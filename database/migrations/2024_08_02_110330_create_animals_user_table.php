@@ -11,17 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('animals', function (Blueprint $table) {
+        Schema::create('animals_user', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('breed')->nullable();
+            $table->unsignedBigInteger('type_animals_id');
             $table->integer('age')->nullable();
             $table->decimal('weight', 5, 2)->nullable();
-            $table->unsignedBigInteger('type_animal_id'); // Define the foreign key column
+            $table->uuid('user_id'); // Chave estrangeira UUID
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('type_animals_id')->references('id')->on('type_animals')->onDelete('cascade');
 
-            // Add foreign key constraint
-            $table->foreign('type_animal_id')->references('id')->on('type_animals')->onDelete('cascade');
         });
     }
 
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('animals');
+        Schema::dropIfExists('animals_user');
     }
 };
