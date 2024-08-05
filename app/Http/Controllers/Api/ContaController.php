@@ -31,7 +31,6 @@ class ContaController extends Controller
  
         // return new ContaResource($contas);
 
-
         try {
  
             $validatedData = $request->validate([
@@ -39,7 +38,7 @@ class ContaController extends Controller
             ]);
             
             // Encontrar a conta pelo ID
-            $conta = Conta::firstWhere('conta', $validatedData["conta"]);
+            $conta = Conta::find($conta);
 
             if ($conta) {
                 return response()->json(['message' => 'Conta já existe.'], Response::HTTP_NOT_FOUND);

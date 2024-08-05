@@ -16,5 +16,7 @@ export default createVuetify({
     sets: {
       mdi,
     },
-  },
+  }, 
+  components,
+  directives,
 })

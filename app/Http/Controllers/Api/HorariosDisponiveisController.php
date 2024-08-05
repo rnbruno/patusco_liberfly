@@ -3,19 +3,28 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Usuario;
+use App\Http\Resources\HorariosDisponiveisResource;
+use App\Models\HorariosDisponiveis;
 use Illuminate\Http\Request;
 
-class UsuarioController extends Controller
+
+class HorariosDisponiveisController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+
+        $horarios_disponiveis = HorariosDisponiveis::getHorarios();
+        return HorariosDisponiveisResource::collection($horarios_disponiveis);
     }
 
+    public function getHorariosDisponiveis()
+    {
+
+       
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -27,7 +36,7 @@ class UsuarioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Usuario $usuario)
+    public function show(HorariosDisponiveis $horariosDisponiveis)
     {
         //
     }
@@ -35,7 +44,7 @@ class UsuarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, HorariosDisponiveis $horariosDisponiveis)
     {
         //
     }
@@ -43,7 +52,7 @@ class UsuarioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Usuario $usuario)
+    public function destroy(HorariosDisponiveis $horariosDisponiveis)
     {
         //
     }

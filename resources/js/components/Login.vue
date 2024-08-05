@@ -21,7 +21,8 @@
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200 ">
                             <div class="pricing-header p-3 pb-md-4 mx-auto text-center "></div>
-                            <form>
+                            <form @submit.prevent="submitLogin">
+
                                 <div class="shrink-0 flex items-center">
                                     <img class="mb-4" :src="logoUrl" style="width:65px" alt="Logo" width="72"
                                         height="57">
@@ -29,23 +30,41 @@
                                 </div>
 
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="floatingInput"
-                                        placeholder="name@example.com">
-                                    <label for="floatingInput">Email address</label>
+                                    <input type="email" v-model="loginForm.email" class="form-control" id="email"
+                                        placeholder="name@example.com" required autofocus autocomplete="username">
+                                    <label for="email">Email address</label>
+                                    <!-- Validation Errors -->
+                                    <div class="text-red-600 mt-1 font-6">
+                                        <div v-for="message in validationErrors?.email">
+                                            {{ message }}
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="password" class="form-control" id="floatingPassword"
-                                        placeholder="Password">
-                                    <label for="floatingPassword">Password</label>
+                                    <input type="password" v-model="loginForm.password" class="form-control"
+                                        id="password" placeholder="Password" required>
+                                    <label for="password">Password</label>
+                                    <!-- Validation Errors -->
+                                    <div class="text-red-600 mt-1 text-wrap">
+                                        <div  v-for="message in validationErrors?.password">
+                                            {{ message }}
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="checkbox mb-3">
                                     <label>
-                                        <input type="checkbox" value="remember-me"> Remember me
+                                        <input type="checkbox" v-model="loginForm.remember" value="remember-me"
+                                            id="remember"> Remember me
                                     </label>
                                 </div>
-                                <button class="w-100 btn btn-sm btn-primary" @click="submit">Sign in</button>
-
+                                <div class="flex items-center justify-end mt-4">
+                                    <button
+                                        class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-4"
+                                        :class="{ 'opacity-25': processing }" :disabled="processing">
+                                        Log in
+                                    </button>
+                                </div>
                             </form>
 
                         </div>
@@ -60,46 +79,26 @@
 <script>
 import Navbar from '../layouts/Navbar.vue';
 import Footer from '../layouts/Footer.vue';
-
+import useAuth from '../composables/auth'
 export default {
     name: 'Login',
     data() {
         return {
             logoUrl: '/img/logo.jpg', // Caminho relativo a partir da pasta public
             showDropdown: false,
-            errorLogin: false,
-            user: {},
-            email: '',
-            password: '',
-            showPassword: false,
-            valid: false,
-            rules: {
-                required: (value) => !!value || 'Required.',
-                email: (value) => {
-                    const pattern = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/
-                    return pattern.test(value) || 'Invalid e-mail.'
-                },
-            },
+
         }
+    },
+    setup() {
+        const { loginForm, validationErrors, processing, submitLogin } = useAuth()
+
+        return { loginForm, validationErrors, processing, submitLogin }
     },
     components: {
         Navbar,
         Footer
     },
     methods: {
-        login() {
-            this.errorLogin = false
-            this.$store.dispatch(`auth/${AUTH_REQUEST}`, this.user)
-                .then(() => {
-                    this.$router.push('/');
-                }).catch(() => {
-                    this.errorLogin = true
-                });
-            // this.loading = false
-        },
-        submit() {
-            this.$emit('submit', this.email)
-        }
 
     }
 
@@ -176,5 +175,8 @@ export default {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+.font-6{
+    font-size: 12px;
 }
 </style>

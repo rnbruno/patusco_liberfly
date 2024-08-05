@@ -59,7 +59,6 @@ class Conta extends Model
     }
     public static function insertConta($conta)
     {
-
         $nextId = DB::select("SHOW TABLE STATUS LIKE 'conta'")[0]->Auto_increment;
 
         $inserted = DB::table('conta')

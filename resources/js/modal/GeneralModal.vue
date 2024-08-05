@@ -1,17 +1,18 @@
 <!-- Modal.vue -->
 <template>
-  <div v-if="active_2" class="modal">
+  <div v-if="active_" class="modal">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">{{ title }}</h5>
+          <h5 class="modal-title">{{button_[0]}}</h5>
           <button type="button" class="btn-close" @click="closeModal"></button>
         </div>
         <div class="modal-body">
-          <slot name="body2"></slot>
+          <label for="modalInput" class="form-label">{{input_[0]}}</label>
+          <input type="text" class="form-control" id="acount" required>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" @click="confirm2">{{button_[0]}}</button>
+          <button type="button" class="btn btn-success" @click="confirm">{{button_[0]}}</button>
         </div>
       </div>
     </div>
@@ -22,37 +23,37 @@
 export default {
   props: {
     title: String,
-    active_2: Boolean,
+    active_: Boolean,
     type: String,
     button_: Array,
     input_: Array,
   },
-  active_2: {
+  active_: {
       type: Boolean,
-      required: true,
+      required: false,
   },
   methods: {
     closeModal() {
       console.log('Closing modal');
-      this.$emit('insert:active_2', false);
+      this.$emit('update:active_', false);
     },
-    confirm2() {
+    confirm() {
         console.log('Confirm button clicked');
-        this.$emit('confirm2');
+        this.$emit('confirm');
         // Mostrar uma mensagem de sucesso
         // Fechar o modal
-        this.$emit('insert:active_2', false);
+        this.$emit('update:active_', false);
 
     },
     
   },
   created() {
     console.log('Modal created with title:', this.title);
-    console.log('Modal active_2 status:', this.active_2);
+    console.log('Modal active_ status:', this.active_);
   },
   watch: {
-    active_2(newVal) {
-      console.log('Modal active_2 status changed:', newVal);
+    active_(newVal) {
+      console.log('Modal active_ status changed:', newVal);
     },
     title(newVal) {
       console.log('Modal title changed:', newVal);

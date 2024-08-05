@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('medical_id');
             $table->dateTime('marcacao_date');
             $table->string('reason');
+            $table->boolean('excluido');
             $table->text('notes')->nullable();
             $table->timestamps();
 

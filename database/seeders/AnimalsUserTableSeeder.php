@@ -22,7 +22,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 3,
                 'weight' => 25.5,
-                'user_id' => '89de8b34-2190-4e7c-90ef-9228210a5cd7', // Substitua por um UUID existente
+                'user_id' => 1, // Substitua por um UUID existente
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -32,7 +32,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 2, // Gato
                 'age' => 2,
                 'weight' => 4.2,
-                'user_id' => 'a046c938-851c-4a7b-ae2a-6818894b97c4', // Substitua por um UUID existente
+                'user_id' => 2, // Substitua por um UUID existente
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -42,7 +42,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 3, // Pássaro
                 'age' => 1,
                 'weight' => 0.1,
-                'user_id' => '616cfb4c-52a4-4c82-8002-5b4ae5fb8a4d', // Substitua por um UUID existente
+                'user_id' => 3, // Substitua por um UUID existente
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -52,7 +52,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 4, // Coelho
                 'age' => 4,
                 'weight' => 1.5,
-                'user_id' => '410e8b5f-dba9-4f30-80c9-9437a2aad954', // Substitua por um UUID existente
+                'user_id' => 4, // Substitua por um UUID existente
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -62,7 +62,177 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 6, // Peixe
                 'age' => 1,
                 'weight' => 0.05,
-                'user_id' => '0d9fd5f5-29b2-47d6-b903-16bf50f8ebac', // Substitua por um UUID existente
+                'user_id' => 3, // Substitua por um UUID existente
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Rex',
+                'breed' => 'Labrador',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 3,
+                'weight' => 25.5,
+                'user_id' => 4, // Substitua por um UUID existente
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Bella',
+                'breed' => 'Beagle',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 2,
+                'weight' => 18.0,
+                'user_id' => 5,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Milo',
+                'breed' => 'Bulldog',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 4,
+                'weight' => 22.3,
+                'user_id' => 7,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Luna',
+                'breed' => 'Poodle',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 1,
+                'weight' => 12.7,
+                'user_id' => 8,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Charlie',
+                'breed' => 'Golden Retriever',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 5,
+                'weight' => 30.2,
+                'user_id' => 7,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Max',
+                'breed' => 'German Shepherd',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 3,
+                'weight' => 35.0,
+                'user_id' => 5,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Rocky',
+                'breed' => 'Rottweiler',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 4,
+                'weight' => 40.5,
+                'user_id' => 8,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Daisy',
+                'breed' => 'Shih Tzu',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 2,
+                'weight' => 10.5,
+                'user_id' => 9,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Bailey',
+                'breed' => 'Pomeranian',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 1,
+                'weight' => 5.2,
+                'user_id' => 4,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Zoe',
+                'breed' => 'Yorkshire Terrier',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 3,
+                'weight' => 6.7,
+                'user_id' => 5,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Cooper',
+                'breed' => 'Boxer',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 5,
+                'weight' => 28.5,
+                'user_id' => 8,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Maggie',
+                'breed' => 'Dachshund',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 2,
+                'weight' => 9.3,
+                'user_id' => 9,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Sadie',
+                'breed' => 'Cocker Spaniel',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 4,
+                'weight' => 14.2,
+                'user_id' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Toby',
+                'breed' => 'Border Collie',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 3,
+                'weight' => 20.7,
+                'user_id' => 2,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Oscar',
+                'breed' => 'Dalmatian',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 5,
+                'weight' => 27.5,
+                'user_id' => 4,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Lily',
+                'breed' => 'Chihuahua',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 2,
+                'weight' => 4.0,
+                'user_id' => 4,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Lucy',
+                'breed' => 'Schnauzer',
+                'type_animals_id' => 1, // Cachorro
+                'age' => 3,
+                'weight' => 15.4,
+                'user_id' => 5,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],

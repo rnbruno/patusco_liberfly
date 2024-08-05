@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('type_animals', function (Blueprint $table) {
+        Schema::create('horarios_disponiveis', function (Blueprint $table) {
             $table->id();
-            $table->string('type_name');
+            $table->date('data'); // Data do horário disponível
+            $table->time('hora_inicio'); // Hora de início
+            $table->time('hora_fim'); // Hora de fim
+            $table->boolean('disponivel')->default(true); // Disponibilidade do horário
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('type_animals');
+        Schema::dropIfExists('horarios_disponiveis');
     }
 };

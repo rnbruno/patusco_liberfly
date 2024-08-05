@@ -19,9 +19,14 @@ import MainApp from '../components/mainapp.vue';
 import ContasIndex from '../layouts/ContasIndex.vue';
 import CartaoIndex from '../Usuario/Cartao.vue';
 import Index from '../components/Posts/Index.vue';
+import AgendaMarcacoesLayout from '../layouts/marcacoes/AgendaMarcacoes.vue';
+import MarcacoesLayout from '../layouts/marcacoes/Marcacoes.vue';
+import WelcomeLayout from '../layouts/Welcome.vue';
 
 function auth(to, from, next) {
     const loggIn = JSON.parse(localStorage.getItem('loggedIn'));
+    // localStorage.setItem('user', JSON.stringify(updatedUser));
+    const logusergIn = JSON.parse(localStorage.getItem('user'));
     if (loggIn) {
         next()
     }else{
@@ -33,9 +38,8 @@ function auth(to, from, next) {
            next({name: 'layout'});
         }
     }
-    console.log(localStorage.getItem('loggedIn'))
-
 }
+
 
 const routes = [
     {
@@ -54,10 +58,10 @@ const routes = [
         beforeEnter: auth,
         children: [
             {
-                path: '/posts',
-                name: 'posts.index',
-                component: ContasIndex,
-                meta: { title: 'Posts' }
+                path: '/',
+                name: 'welcome.index',
+                component: WelcomeLayout,
+                meta: { title: 'Welcome', }
             },
             {
                 path: '/posts/create',
@@ -66,10 +70,16 @@ const routes = [
                 meta: { title: 'Add new post' }
             },
             {
-                path: '/posts/edit/:id',
-                name: 'posts.edit',
-                component: PostsEdit,
-                meta: { title: 'Edit post' }
+                path: '/marcacoes/agendarMarcacao',
+                name: 'marcacoes.agendarMarcacao',
+                component: AgendaMarcacoesLayout,
+                meta: { title: 'Agendar Marcações' }
+            },
+            {
+                path: '/marcacoes/list',
+                name: 'marcacoes.list',
+                component: MarcacoesLayout,
+                meta: { title: 'Verificar Marcações' }
             },
             { path: "/", name: 'home', component: GuestLayout },
             { path: "/acessosIndex", name: 'acesso.index', component: AcessoIndex },
@@ -82,20 +92,6 @@ const routes = [
         ]
     }
 ]
-// path: '/login',
-//                 name: 'login',
-//                 component: Login
-
-// const routes = [
-//     { path: "/", name: 'home', component: AcessoIndex },
-//     { path: "/acessosIndex", name: 'acesso.index', component: AcessoIndex },
-//     { path: "/about", name: 'about', component: About},
-//     { path: "/product", component: Product},
-//     { path: "/dasboard", component: Product},
-//     { path: "/contas", component: ContasIndex},
-//     { path: "/cartao", name: 'cartaoIndex', component: CartaoIndex},
-//     { path: "/login", name: 'login', component: Login}
-// ]
 
 const router = createRouter({
     history: createWebHistory(),
