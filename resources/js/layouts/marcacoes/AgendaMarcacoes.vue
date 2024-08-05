@@ -9,7 +9,7 @@
 
                         <div class="col-md-5">
                             <label for="country" class="form-label">Animal Cadastrado</label>
-                            <select class="form-control" for="animaluser_" v-model="selectedOptionAnimalUser" required>
+                            <select class="form-control" for="animaluser_" id="animaluser_" v-model="selectedOptionAnimalUser"  required>
                                 <option v-for="optionAnimalUser in modalOptionsAnimalsUser"
                                     :key="optionAnimalUser.value" :value="optionAnimalUser.value">
                                     {{ optionAnimalUser.text }}
@@ -21,22 +21,22 @@
                         <div class="col-md-5">
                             <label for="country" class="form-label">Notes</label>
                             <div class="autocomplete">
-                                <textarea type="text" for="note" v-model="searchQuery" @input="filterSuggestions"
+                                <textarea type="text" for="note" id="note" v-model="searchQuery" @input="filterSuggestions"
                                     @focus="showSuggestions = true" @blur="hideSuggestions" class="form-control"
                                     required></textarea>
-                                <ul v-if="showSuggestions" class="suggestions-list">
-                                    <li v-for="(suggestion, index) in filteredSuggestions" :key="index"
+                                    <ul v-if="showSuggestions" class="suggestions-list">
+                                        <li v-for="(suggestion, index) in filteredSuggestions" :key="index"
                                         @mousedown.prevent="selectSuggestion(suggestion)" class="suggestion-item">
                                         {{ suggestion }}
                                     </li>
                                 </ul>
-                                <span v-if="errors.note">{{ errors.note }}</span>
+                                <!-- <span v-if="errors.note">{{ errors.note }}</span> -->
                             </div>
                         </div>
 
                         <div class="col-md-5">
                             <label for="country" class="form-label">Horarios</label>
-                            <select class="form-control" for="horariosD" v-model="selectedOptionHorariosDisponiveis"
+                            <select class="form-control"  id="horariosD" for="horariosD" v-model="selectedOptionHorariosDisponiveis"
                                 required>
                                 <option v-for="optionHorariosDisponivel in modalOptionsHorariosDisponiveis"
                                     :key="optionHorariosDisponivel.value" :value="optionHorariosDisponivel.value">
@@ -196,11 +196,11 @@ export default {
             errors.value = {};
             if (!form.value.note) errors.value.note = 'A note é obrigatória';
 
-            return Object.keys(errors.value).length === 0;
+            // return Object.keys(errors.value).length === 0;
         };
 
         const handleSubmit = async () => {
-            if (validateForm()) {
+            // if (validateForm()) {
                 try {
                     const response = await axios.post('/api/submit', form.value);
                     console.log('Formulário enviado com sucesso:', response.data);
@@ -209,7 +209,7 @@ export default {
                 } catch (error) {
                     console.error('Erro ao enviar o formulário:', error);
                 }
-            }
+            // }
         };
 
         onMounted(async () => {
