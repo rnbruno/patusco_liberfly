@@ -59,7 +59,7 @@ export default function useAuth() {
         validationErrors.value = {};
 
         axios
-            .post("/login", loginForm)
+            .post("api/login", loginForm)
             .then(async (response) => {
                 loginUser(response);
             })
@@ -108,7 +108,7 @@ export default function useAuth() {
         localStorage.removeItem("user");
         localStorage.removeItem("loggedIn");
         try {
-            const response = await axios.post("/logout");
+            const response = await axios.get("/logout");
             console.log("Logout successful:", response.data);
             localStorage.removeItem("user");
             localStorage.removeItem("loggedIn");

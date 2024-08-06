@@ -10,12 +10,12 @@
 namespace PHPUnit\Framework\Constraint;
 
 use const DIRECTORY_SEPARATOR;
+use const PHP_EOL;
 use function explode;
 use function implode;
 use function preg_match;
 use function preg_quote;
 use function preg_replace;
-use function sprintf;
 use function strtr;
 use SebastianBergmann\Diff\Differ;
 use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
@@ -25,27 +25,16 @@ use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
  */
 final class StringMatchesFormatDescription extends Constraint
 {
-    private string $formatDescription;
-    private readonly string $regularExpression;
+    private readonly string $formatDescription;
 
     public function __construct(string $formatDescription)
     {
-        $this->regularExpression = $this->createRegularExpressionFromFormatDescription(
-            $this->convertNewlines($formatDescription)
-        );
-
         $this->formatDescription = $formatDescription;
     }
 
-    /**
-     * @todo Use format description instead of regular expression
-     */
     public function toString(): string
     {
-        return sprintf(
-            'matches PCRE pattern "%s"',
-            $this->regularExpression
-        );
+        return 'matches format description:' . PHP_EOL . $this->formatDescription;
     }
 
     /**
@@ -56,7 +45,14 @@ final class StringMatchesFormatDescription extends Constraint
     {
         $other = $this->convertNewlines($other);
 
-        return preg_match($this->regularExpression, $other) > 0;
+        $matches = preg_match(
+            $this->regularExpressionForFormatDescription(
+                $this->convertNewlines($this->formatDescription),
+            ),
+            $other,
+        );
+
+        return $matches > 0;
     }
 
     protected function failureDescription(mixed $other): string
@@ -71,7 +67,7 @@ final class StringMatchesFormatDescription extends Constraint
 
         foreach ($from as $index => $line) {
             if (isset($to[$index]) && $line !== $to[$index]) {
-                $line = $this->createRegularExpressionFromFormatDescription($line);
+                $line = $this->regularExpressionForFormatDescription($line);
 
                 if (preg_match($line, $to[$index]) > 0) {
                     $from[$index] = $to[$index];
@@ -79,13 +75,13 @@ final class StringMatchesFormatDescription extends Constraint
             }
         }
 
-        $this->formatDescription = implode("\n", $from);
-        $other                   = implode("\n", $to);
+        $from = implode("\n", $from);
+        $to   = implode("\n", $to);
 
-        return (new Differ(new UnifiedDiffOutputBuilder("--- Expected\n+++ Actual\n")))->diff($this->formatDescription, $other);
+        return $this->differ()->diff($from, $to);
     }
 
-    private function createRegularExpressionFromFormatDescription(string $string): string
+    private function regularExpressionForFormatDescription(string $string): string
     {
         $string = strtr(
             preg_quote($string, '/'),
@@ -102,7 +98,7 @@ final class StringMatchesFormatDescription extends Constraint
                 '%x' => '[0-9a-fA-F]+',
                 '%f' => '[+-]?\.?\d+\.?\d*(?:[Ee][+-]?\d+)?',
                 '%c' => '.',
-            ]
+            ],
         );
 
         return '/^' . $string . '$/s';
@@ -111,5 +107,10 @@ final class StringMatchesFormatDescription extends Constraint
     private function convertNewlines(string $text): string
     {
         return preg_replace('/\r\n/', "\n", $text);
+    }
+
+    private function differ(): Differ
+    {
+        return new Differ(new UnifiedDiffOutputBuilder("--- Expected\n+++ Actual\n"));
     }
 }

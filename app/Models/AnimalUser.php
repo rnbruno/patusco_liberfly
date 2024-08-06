@@ -44,7 +44,7 @@ class AnimalUser extends Model
         $animalsUsers = DB::table('animals_user')
         ->join('type_animals', 'animals_user.type_animals_id', '=', 'type_animals.id')
         ->select('animals_user.*', 'type_animals.type_name as type_name')
-        ->where('animals_user.user_id', '=', $idAsString)
+        ->where('animals_user.id_int', '=', $idAsString)
         ->get();
     
     // Retorna os dados utilizando a MarcacoesResource

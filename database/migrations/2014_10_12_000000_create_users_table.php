@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone');
             $table->string('password');
-            $table->increments('id_int');
+            $table->integer('id_int')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

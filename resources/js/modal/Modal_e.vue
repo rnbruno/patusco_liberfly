@@ -1,18 +1,46 @@
-<template>
-  <div v-if="isVisible" class="modal-overlay">
+<!-- <template>
+  <div v-if="active_att" class="modal-overlay">
     <div class="modal-content">
       <button @click="closeModal">Close</button>
-      <h2>{{ title }}</h2>
+      <h2></h2>
       <input v-model="inputValue" />
       <slot></slot>
+    </div>
+  </div>
+</template> -->
+
+<template>
+  <div v-if="active_att" class="modal-overlay">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Atribuição <div style="color:gray" class="text-left">{{ title }}</div>
+          </h5>
+        </div>
+        <!-- <h2>{{ title }}<div class="text-bg-secondary">{{ initialInputValue2 }}</div>
+        </h2> -->
+        <div class="modal-body">
+          <br>
+          <!-- <input v-model="inputValue" /> -->
+          <!-- <label for="modalInput" class="form-label">Medical</label>
+          
+          <label for="modalInput" class="form-label"></label> -->
+          <slot name="bodyAtt1"></slot>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" title="Selecione para atribuir" @click="confirm">Editar</button>
+          <button type="button" class="btn btn-light ml-2" @click="closeModal">Close</button>
+        </div>
+
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ModalAtribuir',
-  props: ['isVisible', 'title', 'initialInputValue'],
+  name: 'ModalEditar',
+  props: ['active_att', 'title', 'initialInputValue'],
   data() {
     return {
       inputValue: this.initialInputValue
@@ -20,6 +48,14 @@ export default {
   },
   methods: {
     closeModal() {
+      this.$emit('close');
+    },
+    confirm(){
+      this.$emit('confirm', {
+        selectedOption: this.selectedOption, hiddenValue: this.hiddenValue 
+      });
+      // Mostrar uma mensagem de sucesso
+      // Fechar o modal
       this.$emit('close');
     }
   }

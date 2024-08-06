@@ -22,7 +22,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 3,
                 'weight' => 25.5,
-                'user_id' => 1, // Substitua por um UUID existente
+                'id_int' => 1, // Substitua por um UUID existente
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -32,7 +32,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 2, // Gato
                 'age' => 2,
                 'weight' => 4.2,
-                'user_id' => 2, // Substitua por um UUID existente
+                'id_int' => 2, // Substitua por um UUID existente
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -42,7 +42,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 3, // Pássaro
                 'age' => 1,
                 'weight' => 0.1,
-                'user_id' => 3, // Substitua por um UUID existente
+                'id_int' => 3, // Substitua por um UUID existente
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -52,7 +52,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 4, // Coelho
                 'age' => 4,
                 'weight' => 1.5,
-                'user_id' => 4, // Substitua por um UUID existente
+                'id_int' => 4, // Substitua por um UUID existente
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -62,7 +62,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 6, // Peixe
                 'age' => 1,
                 'weight' => 0.05,
-                'user_id' => 3, // Substitua por um UUID existente
+                'id_int' => 3, // Substitua por um UUID existente
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -72,7 +72,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 3,
                 'weight' => 25.5,
-                'user_id' => 4, // Substitua por um UUID existente
+                'id_int' => 4, // Substitua por um UUID existente
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -82,7 +82,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 2,
                 'weight' => 18.0,
-                'user_id' => 5,
+                'id_int' => 5,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -92,7 +92,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 4,
                 'weight' => 22.3,
-                'user_id' => 7,
+                'id_int' => 7,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -102,7 +102,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 1,
                 'weight' => 12.7,
-                'user_id' => 8,
+                'id_int' => 8,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -112,7 +112,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 5,
                 'weight' => 30.2,
-                'user_id' => 7,
+                'id_int' => 7,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -122,7 +122,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 3,
                 'weight' => 35.0,
-                'user_id' => 5,
+                'id_int' => 5,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -132,7 +132,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 4,
                 'weight' => 40.5,
-                'user_id' => 8,
+                'id_int' => 8,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -142,7 +142,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 2,
                 'weight' => 10.5,
-                'user_id' => 9,
+                'id_int' => 9,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -152,7 +152,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 1,
                 'weight' => 5.2,
-                'user_id' => 4,
+                'id_int' => 4,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -162,7 +162,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 3,
                 'weight' => 6.7,
-                'user_id' => 5,
+                'id_int' => 5,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -172,7 +172,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 5,
                 'weight' => 28.5,
-                'user_id' => 8,
+                'id_int' => 8,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -182,7 +182,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 2,
                 'weight' => 9.3,
-                'user_id' => 9,
+                'id_int' => 9,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -192,7 +192,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 4,
                 'weight' => 14.2,
-                'user_id' => 1,
+                'id_int' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -202,7 +202,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 3,
                 'weight' => 20.7,
-                'user_id' => 2,
+                'id_int' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -212,7 +212,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 5,
                 'weight' => 27.5,
-                'user_id' => 4,
+                'id_int' => 4,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -222,7 +222,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 2,
                 'weight' => 4.0,
-                'user_id' => 4,
+                'id_int' => 4,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -232,7 +232,7 @@ class AnimalsUserTableSeeder extends Seeder
                 'type_animals_id' => 1, // Cachorro
                 'age' => 3,
                 'weight' => 15.4,
-                'user_id' => 5,
+                'id_int' => 5,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],

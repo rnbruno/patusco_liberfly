@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('type_animals_id');
             $table->integer('age')->nullable();
             $table->decimal('weight', 5, 2)->nullable();
-            $table->uuid('user_id'); // Chave estrangeira UUID
             $table->integer('id_int');
             $table->timestamps();
             $table->foreign('type_animals_id')->references('id')->on('type_animals')->onDelete('cascade');

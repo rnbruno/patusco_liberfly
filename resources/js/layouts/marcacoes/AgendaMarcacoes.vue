@@ -4,12 +4,13 @@
 
         <div class="row g-5">
             <div class="col-md-12">
-                <form class="needs-validation" @submit.prevent="handleSubmit" novalidate>
+                <form class="needs-validation" @submit.prevent="submitForm" method="post">
                     <div class="row g-3">
 
                         <div class="col-md-5">
                             <label for="country" class="form-label">Animal Cadastrado</label>
-                            <select class="form-control" for="animaluser_" id="animaluser_" v-model="selectedOptionAnimalUser"  required>
+                            <select class="form-control" for="animaluser_" id="animaluser_" name="animaluser_"
+                                v-model="selectedOptionAnimalUser" required>
                                 <option v-for="optionAnimalUser in modalOptionsAnimalsUser"
                                     :key="optionAnimalUser.value" :value="optionAnimalUser.value">
                                     {{ optionAnimalUser.text }}
@@ -21,11 +22,11 @@
                         <div class="col-md-5">
                             <label for="country" class="form-label">Notes</label>
                             <div class="autocomplete">
-                                <textarea type="text" for="note" id="note" v-model="searchQuery" @input="filterSuggestions"
-                                    @focus="showSuggestions = true" @blur="hideSuggestions" class="form-control"
-                                    required></textarea>
-                                    <ul v-if="showSuggestions" class="suggestions-list">
-                                        <li v-for="(suggestion, index) in filteredSuggestions" :key="index"
+                                <textarea type="text" for="note" id="note" name="note" v-model="searchQuery"
+                                    @input="filterSuggestions" @focus="showSuggestions = true" @blur="hideSuggestions"
+                                    class="form-control" required></textarea>
+                                <ul v-if="showSuggestions" class="suggestions-list">
+                                    <li v-for="(suggestion, index) in filteredSuggestions" :key="index"
                                         @mousedown.prevent="selectSuggestion(suggestion)" class="suggestion-item">
                                         {{ suggestion }}
                                     </li>
@@ -36,8 +37,8 @@
 
                         <div class="col-md-5">
                             <label for="country" class="form-label">Horarios</label>
-                            <select class="form-control"  id="horariosD" for="horariosD" v-model="selectedOptionHorariosDisponiveis"
-                                required>
+                            <select class="form-control" id="horariosD" name="horariosD" for="horariosD"
+                                v-model="selectedOptionHorariosDisponiveis" required>
                                 <option v-for="optionHorariosDisponivel in modalOptionsHorariosDisponiveis"
                                     :key="optionHorariosDisponivel.value" :value="optionHorariosDisponivel.value">
                                     {{ optionHorariosDisponivel.text }}
@@ -57,6 +58,7 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
 import useMarcacoes from '@/composables/marcacoes';
 import useMedicals from '@/composables/medicos';
@@ -66,6 +68,7 @@ import Swal from 'sweetalert2';
 import ModalAtribuir from '../../modal/AtribuirModal.vue';
 import Modal_e from '../../modal/Modal_e.vue';
 import { format } from 'date-fns';
+
 
 export default {
 
@@ -108,6 +111,7 @@ export default {
         };
     },
     setup() {
+        const router = useRouter();
         const { marcacao, marcacoes, getMarcacoes, updateMarcacoes, deleteMarcacao } = useMarcacoes();
         const { medical, medicals, getMedicals } = useMedicals();
         const { horariosDisponiveis, getHorariosDisponiveis } = useHorariosDisponiveis();
@@ -160,7 +164,8 @@ export default {
             // Assumindo que medicals é uma lista de objetos com id e name
             modalOptions.value = horariosDisponiveis.value.map(horariosDisponivel => ({
                 value: horariosDisponivel.id,
-                text: horariosDisponivel.hora_inicio
+                text: `${horariosDisponivel.data} - ${horariosDisponivel.hora_inicio}`,
+
             }));
         };
 
@@ -179,7 +184,7 @@ export default {
             // Assumindo que medicals é uma lista de objetos com id e name
             modalOptionsHorariosDisponiveis.value = horariosDisponiveis.value.map(horariosDisponivel => ({
                 value: horariosDisponivel.id,
-                text: horariosDisponivel.hora_inicio
+                text: `${horariosDisponivel.data}  ${horariosDisponivel.hora_inicio}`,
             }));
             if (modalOptionsHorariosDisponiveis.value.length > 0) {
                 selectedOptionHorariosDisponiveis.value = modalOptionsHorariosDisponiveis.value[0].value;
@@ -201,14 +206,15 @@ export default {
 
         const handleSubmit = async () => {
             // if (validateForm()) {
-                try {
-                    const response = await axios.post('/api/submit', form.value);
-                    console.log('Formulário enviado com sucesso:', response.data);
-                    // Limpar o formulário após envio bem-sucedido
-                    form.value = { name: '', email: '', message: '' };
-                } catch (error) {
-                    console.error('Erro ao enviar o formulário:', error);
-                }
+            try {
+                console.log(form.value);
+                const response = await axios.post('/api/submitMarcacao', form.value);
+                console.log('Formulário enviado com sucesso:', response.data);
+                // Limpar o formulário após envio bem-sucedido
+                form.value = { name: '', email: '', message: '' };
+            } catch (error) {
+                console.error('Erro ao enviar o formulário:', error);
+            }
             // }
         };
 
@@ -252,6 +258,7 @@ export default {
             errors,
             handleSubmit,
             form,
+            router
 
         };
     },
@@ -277,6 +284,34 @@ export default {
             this.modalInputValue3 = name_animal; // Substitua pelo valor desejado
             this.isModalVisible = true;
             this.marcacaoId_ = marcacaoId;
+        },
+        async submitForm() {
+            try {
+                const formData = {
+                    animaluser_: this.selectedOptionAnimalUser,  // Pegando o valor selecionado
+                    horariosDisponiveis_: this.selectedOptionHorariosDisponiveis, // Pegando o valor selecionado
+                    note: this.searchQuery  // Pegando o valor do textarea
+                };
+                const response = await axios.post('/api/submitMarcacao', formData);
+                
+                this.$router.push({ name: 'welcome.index' });
+
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: 'Marcação inserida com sucesso!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            } catch (error) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: error,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
         },
         // async confirmarAtribuir(payload) {
         //     console.log('Received from modal:', payload);

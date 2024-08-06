@@ -8,6 +8,7 @@ use App\Models\Marcacoes;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\MarcacoesRequest;
+use App\Models\HorariosDisponiveis;
 
 class MarcacoesController extends Controller
 {
@@ -31,6 +32,23 @@ class MarcacoesController extends Controller
      */
     public function store(Request $request)
     {
+        // Validar os dados do request
+        $validatedData = $request->validate([
+            'horariosDisponiveis_' => 'required|exists:horarios_disponiveis,id',
+            'note' => 'required',
+            'animaluser_' => 'required|exists:animals_user,id',
+            // Adicione outras validações conforme necessário
+        ]);
+
+        Marcacoes::criarMarcacao($validatedData['animaluser_'],$validatedData['note'],$validatedData['horariosDisponiveis_']); 
+        
+        HorariosDisponiveis::atualizar($validatedData['horariosDisponiveis_']);
+
+        // Retornar uma resposta JSON com a marcação criada
+        return response()->json([
+            'success' => true,
+            'message' => 'Marcação criada com sucesso.',
+        ], 201);
 
     }
 
@@ -50,6 +68,48 @@ class MarcacoesController extends Controller
 
         \DB::enableQueryLog();
 
+
+        $validatedData = $request->validate([
+            'id' => 'required|int|max:255',
+            'medical_id' => 'required|int|max:255',
+            // Adicione outras regras de validação conforme necessário
+        ]);
+
+        $id = $validatedData["id"];
+
+        try {
+
+            $marcacao = Marcacoes::findOrFail($id);
+
+            if (!$marcacao) {
+                return response()->json(['message' => 'Conta não encontrada.'], Response::HTTP_NOT_FOUND);
+            }
+
+            // Atualizar o campo medical_id
+            $marcacao->medical_id = $validatedData['medical_id'];
+            $marcacao->save(); // Salva as mudanças
+
+            $queries = \DB::getQueryLog();
+
+            // Retornar sucesso com o recurso atualizado
+            return response()->json([
+                'success' => true,
+                'message' => 'Marcação atribuída com sucesso.',
+                'data' => new MarcacoesResource($marcacao)
+            ], 200);
+
+        } catch (\Exception $e) {
+            // Retornar erro se algo deu errado
+            return response()->json([
+                'success' => false,
+                'message' => 'Erro ao atribuir registro.',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function edicao(Request $request, Marcacoes $marcacao)
+    {
 
         $validatedData = $request->validate([
             'id' => 'required|int|max:255',
