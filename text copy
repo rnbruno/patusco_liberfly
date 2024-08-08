@@ -54,9 +54,6 @@
 
 # dd($query->toSql());
 
-# npm install @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/free-brands-svg-icons @fortawesome/vue-fontawesome
-
-
 # $sql = $query->toSql();
 
 # // Obter os valores dos bindings
@@ -73,6 +70,5 @@
 
 # o acesso12 é o método da função AcessoController
 
-php artisan route:list
 
-# npm install ziggy-js
+    root@5e85ac6aff2c:/var/www# php artisan route:list

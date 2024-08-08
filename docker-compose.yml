@@ -44,6 +44,24 @@ services:
         networks:
             - laravel
 
+    # wordpress:
+    #     depends_on:
+    #     - db
+    #     image: wordpress:latest
+    #     restart: always
+    #     # Restart line controls the restart mode, meaning if the container stops running for any reason, it will restart the process immediately.
+    #     ports:
+    #         - "8000:80"
+    #   # The previous line defines the port that the WordPress container will use. After successful installation, the full path will look like this: http://localhost:8000
+    #     environment:
+    #         WORDPRESS_DB_HOST: db
+    #         WORDPRESS_DB_USER: ${DB_DATABASE:-curupira}
+    #         WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-pr0t3c@0}
+    #         WORDPRESS_DB_NAME: ${DB_USERNAME:-curupira}
+    #     volumes:
+    #         - wordpress_data:/var/www/html/wordpress
+    #     networks:
+    #         - laravel
 
     # queue
     queue:
